@@ -17,5 +17,6 @@ namespace projecto_final_Andres_Garcia.Classes
             this.catcode = in_catcode;
             this.description = in_description;
         }
+
     }
 }

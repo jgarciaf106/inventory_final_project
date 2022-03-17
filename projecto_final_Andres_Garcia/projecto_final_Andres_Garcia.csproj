@@ -105,23 +105,24 @@
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\User.cs" />
-    <Compile Include="Data\Inventory_Data.cs" />
-    <Compile Include="Logic\Logic_Inventory.cs" />
+    <Compile Include="Data\InventoryData.cs" />
+    <Compile Include="Data\DataParsing.cs" />
+    <Compile Include="Logic\LogicInventory.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmMain.cs">
+    <Compile Include="UI\Section\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmMain.Designer.cs">
+    <Compile Include="UI\Section\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmLogin.cs">
+    <Compile Include="UI\LogIn\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmLogin.Designer.cs">
+    <Compile Include="UI\LogIn\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -131,10 +132,10 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmMain.resx">
+    <EmbeddedResource Include="UI\Section\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmLogin.resx">
+    <EmbeddedResource Include="UI\LogIn\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

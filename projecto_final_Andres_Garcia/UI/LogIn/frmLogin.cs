@@ -1,5 +1,7 @@
 ﻿using projecto_final_Andres_Garcia.API;
 using projecto_final_Andres_Garcia.Classes;
+using projecto_final_Andres_Garcia.Logic;
+using projecto_final_Andres_Garcia.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,10 +23,19 @@ namespace projecto_final_Andres_Garcia
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            DBAPI api = new DBAPI("https://jgarciaf106.herokuapp.com/api/");
-            User objUser = new User(txtUsername.Text,"", txtPassword.Text);
+            frmMain objFrmMain = new frmMain();
+            User objUser = new User(txtUsername.Text,"", txtPassword.Text, false);
+            LogicInventory objInvLogic = new LogicInventory();
 
-            api.UserLogIn(objUser);
+            if (objInvLogic.GrantAccess(objUser)) {
+                this.Hide();
+                objFrmMain.ShowDialog();             
+            }
+            else
+            {
+                MessageBox.Show("Invalid username or password.");
+            }
+
         }
     }
 }

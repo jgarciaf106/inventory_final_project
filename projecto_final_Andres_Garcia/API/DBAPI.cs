@@ -43,9 +43,10 @@ namespace projecto_final_Andres_Garcia.API
             return userCreated;
         }
 
-        public Boolean UserLogIn(User obj)
+        public Tuple<bool,bool> UserLogIn(User obj)
         {
             bool accessGranted = false;
+            bool isAdmin = false;
 
             // pass json object to API with username and password to 
             // validate if access should be granted.
@@ -59,15 +60,18 @@ namespace projecto_final_Andres_Garcia.API
 
                 if (JsonConvert.DeserializeObject<DataParsing>(response.Content).access == "Granted")
                 {
-                    Console.WriteLine(JsonConvert.DeserializeObject<DataParsing>(response.Content).is_admin);
                     accessGranted = true;
+                }
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).is_admin)
+                {
+                    isAdmin = true;
                 }
             }
             catch (WebException ex)
             {
                 Console.WriteLine(ex);
             }
-            return accessGranted;
+            return Tuple.Create(accessGranted,isAdmin);
         }
 
         public Boolean CreateProduct(Product obj)
@@ -93,6 +97,28 @@ namespace projecto_final_Andres_Garcia.API
             }
 
             return producCreated;
+        }
+
+        public Boolean DeleteProduct(int id)
+        {
+            bool producDeleted = false;
+            // pass json object to API with product id to delete.
+            try
+            {
+                var request = new RestRequest("deleteproduct/" + id, Method.DELETE);
+                var response = this.client.Execute(request);
+
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The product has being successfully deleted.")
+                {
+                    producDeleted= true;
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return producDeleted;
         }
 
         public List<Product> GetProducts()
@@ -144,6 +170,28 @@ namespace projecto_final_Andres_Garcia.API
             }
 
             return categoryCreated;
+        }
+
+        public Boolean DeleteCategory(int id)
+        {
+            bool categoryDeleted = false;
+
+            try
+            {
+                var request = new RestRequest("deletecategory/" + id, Method.DELETE);
+                var response = this.client.Execute(request);
+
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The category has being successfully deleted.")
+                {
+                    categoryDeleted = true;
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return categoryDeleted;
         }
 
         public List<Category> GetCategories()

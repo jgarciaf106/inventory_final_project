@@ -32,6 +32,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpProducts = new System.Windows.Forms.GroupBox();
+            this.btnDeleteProduct = new System.Windows.Forms.Button();
+            this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.btnCreateNewProduct = new System.Windows.Forms.Button();
             this.txtProductDescription = new System.Windows.Forms.TextBox();
             this.txtProductCategoryCode = new System.Windows.Forms.TextBox();
@@ -46,8 +48,6 @@
             this.btnGetProducts = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btnUpdateProduct = new System.Windows.Forms.Button();
-            this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.grpProducts.SuspendLayout();
@@ -114,6 +114,28 @@
             this.grpProducts.Text = "Productos";
             this.grpProducts.Visible = false;
             // 
+            // btnDeleteProduct
+            // 
+            this.btnDeleteProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteProduct.Location = new System.Drawing.Point(361, 317);
+            this.btnDeleteProduct.Name = "btnDeleteProduct";
+            this.btnDeleteProduct.Size = new System.Drawing.Size(131, 52);
+            this.btnDeleteProduct.TabIndex = 9;
+            this.btnDeleteProduct.Text = "Delete";
+            this.btnDeleteProduct.UseVisualStyleBackColor = true;
+            this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
+            // 
+            // btnUpdateProduct
+            // 
+            this.btnUpdateProduct.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdateProduct.Location = new System.Drawing.Point(65, 317);
+            this.btnUpdateProduct.Name = "btnUpdateProduct";
+            this.btnUpdateProduct.Size = new System.Drawing.Size(131, 52);
+            this.btnUpdateProduct.TabIndex = 8;
+            this.btnUpdateProduct.Text = "Update";
+            this.btnUpdateProduct.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
+            // 
             // btnCreateNewProduct
             // 
             this.btnCreateNewProduct.ForeColor = System.Drawing.Color.Black;
@@ -123,6 +145,7 @@
             this.btnCreateNewProduct.TabIndex = 7;
             this.btnCreateNewProduct.Text = "Crear Producto";
             this.btnCreateNewProduct.UseVisualStyleBackColor = true;
+            this.btnCreateNewProduct.Click += new System.EventHandler(this.btnCreateNewProduct_Click);
             // 
             // txtProductDescription
             // 
@@ -262,26 +285,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Admin";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // btnUpdateProduct
-            // 
-            this.btnUpdateProduct.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdateProduct.Location = new System.Drawing.Point(65, 317);
-            this.btnUpdateProduct.Name = "btnUpdateProduct";
-            this.btnUpdateProduct.Size = new System.Drawing.Size(131, 52);
-            this.btnUpdateProduct.TabIndex = 8;
-            this.btnUpdateProduct.Text = "Update";
-            this.btnUpdateProduct.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteProduct
-            // 
-            this.btnDeleteProduct.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteProduct.Location = new System.Drawing.Point(361, 317);
-            this.btnDeleteProduct.Name = "btnDeleteProduct";
-            this.btnDeleteProduct.Size = new System.Drawing.Size(131, 52);
-            this.btnDeleteProduct.TabIndex = 9;
-            this.btnDeleteProduct.Text = "Delete";
-            this.btnDeleteProduct.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 

@@ -12,18 +12,22 @@ namespace projecto_final_Andres_Garcia.Logic
 {
     internal class LogicInventory
     {
-        public Boolean GrantAccess(User objUser)
+        public Tuple<bool,bool> GrantAccess(User objUser)
         {
-            Boolean registro_persona = false;
+            Boolean grantAccess = false;
+            Boolean isAdmin = false;
+
             DBAPI api = new DBAPI();
 
             if (objUser.username != "" && objUser.password != "")
             {
-                registro_persona = api.UserLogIn(objUser);
+                grantAccess = api.UserLogIn(objUser).Item1;
+                isAdmin = api.UserLogIn(objUser).Item2;
             }
             
-            return registro_persona;
+            return Tuple.Create(grantAccess, isAdmin);
         }
+
 
     }
 }

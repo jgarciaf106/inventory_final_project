@@ -38,10 +38,10 @@ namespace projecto_final_Andres_Garcia.Data
             return source;
         }
 
-        /*
+        
         public BindingSource loadCategories()
         {
-            List<Product> products = new DBAPI().GetCategory();
+            List<Category> categories = new DBAPI().GetCategories();
 
             BindingSource source = new BindingSource();
             DataTable dt = new DataTable();
@@ -49,7 +49,7 @@ namespace projecto_final_Andres_Garcia.Data
             dt.Columns.Add("Category Code", typeof(int));
             dt.Columns.Add("Description", typeof(string));
 
-            foreach (Category category in category)
+            foreach (Category category in categories)
             {
                 DataRow row = dt.NewRow();
                 row["Category Code"] = category.catcode;
@@ -60,6 +60,6 @@ namespace projecto_final_Andres_Garcia.Data
             source.DataSource = dt;
 
             return source;
-        }*/
+        }
     }
 }

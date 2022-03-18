@@ -16,29 +16,18 @@ namespace projecto_final_Andres_Garcia.UI
 {
     public partial class frmMain : Form
     {
+        DBAPI api = new DBAPI();
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loadGridView()
         {
-            cargar_registros();
-        }
-
-        private void cargar_registros()
-        {
-            
-            // cargar datos
-            /*listBox1.Items.Clear();
-
-            List<Product> productList = new DBAPI().GetProducts();
-
-            foreach (Product objProduct in productList)
-            {
-                string datos = objProduct.prodcode + " | " + objProduct.catcode + " | " + objProduct.description;
-                listBox1.Items.Add(datos);
-            }*/
+            BindingSource objBindingSource = new InventoryData().loadProducts();
+            gridProducts.DataSource = objBindingSource;
+            gridProducts.ClearSelection();
+            gridProducts.DefaultCellStyle.ForeColor = Color.Black;
         }
 
         private void btnGetProducts_Click(object sender, EventArgs e)
@@ -62,11 +51,7 @@ namespace projecto_final_Andres_Garcia.UI
             btnUpdateProduct.Visible = false;
             btnDeleteProduct.Visible = false;
 
-
-            BindingSource objBindingSource = new InventoryData().loadProducts();
-            gridProducts.DataSource = objBindingSource;
-            gridProducts.ClearSelection();
-            gridProducts.DefaultCellStyle.ForeColor = Color.Black;
+            loadGridView();
         }
 
         private void btnCreateProduct_Click(object sender, EventArgs e)
@@ -110,7 +95,57 @@ namespace projecto_final_Andres_Garcia.UI
 
             grpProducts.Visible = true;
             grpProducts.Text = "Administrar Producto";
+
+            loadGridView();
         }
 
+        private void btnCreateNewProduct_Click(object sender, EventArgs e)
+        {
+            int newProductCode, newCategoryCode;
+            string newProductDescription;
+
+            newProductCode = Int32.Parse(txtProductCode.Text);
+            newCategoryCode = Int32.Parse(txtProductCategoryCode.Text);
+            newProductDescription = txtProductDescription.Text;
+
+            Product newProduct = new Product(newProductCode, newCategoryCode, newProductDescription);
+
+            if (api.CreateProduct(newProduct)){
+
+                MessageBox.Show("Producto creado exitosamente.");
+            }
+            else
+            {
+                MessageBox.Show("Favor completar todos los campos de producto");
+            }
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            if (gridProducts.SelectedCells.Count > 0)
+            {
+                int indiceRow = gridProducts.SelectedCells[0].RowIndex;
+                int productToDelete = Int32.Parse(gridProducts.Rows[indiceRow].Cells[0].Value.ToString());
+                if (api.DeleteProduct(Convert.ToInt32(productToDelete))) {
+                    MessageBox.Show("Producto eliminado exitosamente.");
+                    loadGridView();
+                }
+                
+            }
+        }
+
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            if (gridProducts.SelectedCells.Count > 0)
+            {
+                int indiceRow = gridProducts.SelectedCells[0].RowIndex;
+                int productToUpdate = Int32.Parse(gridProducts.Rows[indiceRow].Cells[0].Value.ToString());
+                if (api.DeleteProduct(Convert.ToInt32(productToUpdate)))
+                {
+                    MessageBox.Show("Producto actualizado exitosamente.");
+                    loadGridView();
+                }
+            }
+        }
     }
 }

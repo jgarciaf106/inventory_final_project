@@ -12,6 +12,14 @@ namespace projecto_final_Andres_Garcia.Logic
 {
     internal class LogicInventory
     {
+       /// <summary>
+       /// It checks if the user is in the database and if the password matches the username.
+       /// </summary>
+       /// <param name="User">The user object that contains the username and password.</param>
+       /// <returns>
+       /// A Tuple of two booleans. The first boolean is a flag to indicate if the user has been granted
+       /// access. The second boolean is a flag to indicate if the user is an admin.
+       /// </returns>
         public Tuple<bool,bool> GrantAccess(User objUser)
         {
             Boolean grantAccess = false;

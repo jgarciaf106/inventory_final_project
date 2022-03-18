@@ -17,6 +17,14 @@ namespace projecto_final_Andres_Garcia.API
         RestClient client = new RestClient("https://ag-uca.herokuapp.com/api/");
 
 
+        /// <summary>
+        /// It creates a user in the database.
+        /// </summary>
+        /// <param name="User">The user object that contains the username, password, and isAdmin
+        /// boolean.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
         public Boolean CreateUser(User obj)
         {
             bool userCreated = false;
@@ -43,7 +51,16 @@ namespace projecto_final_Andres_Garcia.API
             return userCreated;
         }
 
-        public Tuple<bool,bool> UserLogIn(User obj)
+        /// <summary>
+        /// It takes in a User object and returns a Tuple of two booleans. The first boolean is true if
+        /// the user has access and the second boolean is true if the user is an admin.
+        /// </summary>
+        /// <param name="User">The user object that contains the username and password.</param>
+        /// <returns>
+        /// The Tuple<bool,bool> is being returned. The first bool is the access granted and the second
+        /// bool is the isAdmin.
+        /// </returns>
+        public Tuple<bool, bool> UserLogIn(User obj)
         {
             bool accessGranted = false;
             bool isAdmin = false;
@@ -71,9 +88,16 @@ namespace projecto_final_Andres_Garcia.API
             {
                 Console.WriteLine(ex);
             }
-            return Tuple.Create(accessGranted,isAdmin);
+            return Tuple.Create(accessGranted, isAdmin);
         }
 
+        /// <summary>
+        /// It creates a product in the database.
+        /// </summary>
+        /// <param name="Product">The product object that will be passed to the API.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
         public Boolean CreateProduct(Product obj)
         {
             bool producCreated = false;
@@ -99,6 +123,46 @@ namespace projecto_final_Andres_Garcia.API
             return producCreated;
         }
 
+        /// <summary>
+        /// It updates a product in the database.
+        /// </summary>
+        /// <param name="Product">The product object that will be passed to the API.</param>
+        /// <param name="id">The id of the product to be updated.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
+        public Boolean UpdateProduct(Product obj, int id)
+        {
+            bool producUpdated = false;
+            // pass json object to API with product details.
+            string json = $"{{\"prodcode\":\"{obj.prodcode}\",\"productcatcode\":\"{obj.catcode}\",\"description\":\"{obj.description}\"}}";
+
+            try
+            {
+                var request = new RestRequest("updateproduct/" + id, Method.PUT)
+                    .AddJsonBody(json);
+                var response = this.client.Execute(request);
+
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The product has being successfully updated.")
+                {
+                    producUpdated = true;
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return producUpdated;
+        }
+
+        /// <summary>
+        /// It deletes a product from the database.
+        /// </summary>
+        /// <param name="id">The id of the product you want to delete.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
         public Boolean DeleteProduct(int id)
         {
             bool producDeleted = false;
@@ -110,7 +174,7 @@ namespace projecto_final_Andres_Garcia.API
 
                 if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The product has being successfully deleted.")
                 {
-                    producDeleted= true;
+                    producDeleted = true;
                 }
             }
             catch (WebException ex)
@@ -121,6 +185,12 @@ namespace projecto_final_Andres_Garcia.API
             return producDeleted;
         }
 
+        /// <summary>
+        /// It returns a list of products.
+        /// </summary>
+        /// <returns>
+        /// A list of Product objects.
+        /// </returns>
         public List<Product> GetProducts()
         {
             List<Product> productList = new List<Product>();
@@ -146,8 +216,15 @@ namespace projecto_final_Andres_Garcia.API
             }
             return productList;
         }
-        
-        public Boolean Createcategory(Category obj)
+
+        /// <summary>
+        /// It creates a category in the database.
+        /// </summary>
+        /// <param name="Category">The category object that will be passed to the API.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
+        public Boolean CreateCategory(Category obj)
         {
             bool categoryCreated = false;
             // pass json object to API with category details
@@ -172,10 +249,50 @@ namespace projecto_final_Andres_Garcia.API
             return categoryCreated;
         }
 
+        /// <summary>
+        /// It updates a category in the database.
+        /// </summary>
+        /// <param name="Category">The category object that will be updated.</param>
+        /// <param name="id">The id of the category to be updated.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
+        public Boolean UpdateCategory(Category obj, int id)
+        {
+            bool categoryUpdated = false;
+            // pass json object to API with category details
+            string json = $"{{\"catcode\":\"{obj.catcode}\",\"description\":\"{obj.description}\"}}";
+
+            try
+            {
+                var request = new RestRequest("updatecategory/" + id, Method.PUT)
+                    .AddJsonBody(json);
+                var response = this.client.Execute(request);
+
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The category has being successfully updated.")
+                {
+                    categoryUpdated = true;
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return categoryUpdated;
+        }
+
+        /// <summary>
+        /// Delete a category from the database
+        /// </summary>
+        /// <param name="id">The id of the category to be deleted.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
         public Boolean DeleteCategory(int id)
         {
             bool categoryDeleted = false;
-
+            Console.WriteLine(id);
             try
             {
                 var request = new RestRequest("deletecategory/" + id, Method.DELETE);
@@ -194,6 +311,12 @@ namespace projecto_final_Andres_Garcia.API
             return categoryDeleted;
         }
 
+        /// <summary>
+        /// It returns a list of categories.
+        /// </summary>
+        /// <returns>
+        /// A list of Category objects.
+        /// </returns>
         public List<Category> GetCategories()
         {
             List<Category> categoryList = new List<Category>();

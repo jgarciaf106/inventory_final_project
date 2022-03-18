@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.grpCategory = new System.Windows.Forms.GroupBox();
+            this.grpCategoryActions = new System.Windows.Forms.GroupBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.grpProducts = new System.Windows.Forms.GroupBox();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
@@ -48,11 +50,26 @@
             this.btnGetProducts = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnGetCategories = new System.Windows.Forms.Button();
+            this.btnCreateCategory = new System.Windows.Forms.Button();
+            this.btnAdminCategory = new System.Windows.Forms.Button();
+            this.gridCategories = new System.Windows.Forms.DataGridView();
+            this.btnUpdateCategory = new System.Windows.Forms.Button();
+            this.btnCreateNewCategory = new System.Windows.Forms.Button();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
+            this.lblCategoryCode = new System.Windows.Forms.Label();
+            this.lblCategoryDescription = new System.Windows.Forms.Label();
+            this.txtCategoryCode = new System.Windows.Forms.TextBox();
+            this.txtCategoryDescription = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.grpCategory.SuspendLayout();
+            this.grpCategoryActions.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.grpProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).BeginInit();
             this.grProductActions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridCategories)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -71,6 +88,8 @@
             // 
             this.tabPage1.BackgroundImage = global::projecto_final_Andres_Garcia.Properties.Resources.logInBx_bg;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage1.Controls.Add(this.grpCategory);
+            this.tabPage1.Controls.Add(this.grpCategoryActions);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -78,6 +97,38 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Categoria";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // grpCategory
+            // 
+            this.grpCategory.Controls.Add(this.txtCategoryDescription);
+            this.grpCategory.Controls.Add(this.txtCategoryCode);
+            this.grpCategory.Controls.Add(this.lblCategoryDescription);
+            this.grpCategory.Controls.Add(this.lblCategoryCode);
+            this.grpCategory.Controls.Add(this.btnDeleteCategory);
+            this.grpCategory.Controls.Add(this.btnCreateNewCategory);
+            this.grpCategory.Controls.Add(this.btnUpdateCategory);
+            this.grpCategory.Controls.Add(this.gridCategories);
+            this.grpCategory.ForeColor = System.Drawing.Color.White;
+            this.grpCategory.Location = new System.Drawing.Point(207, 6);
+            this.grpCategory.Name = "grpCategory";
+            this.grpCategory.Size = new System.Drawing.Size(555, 385);
+            this.grpCategory.TabIndex = 1;
+            this.grpCategory.TabStop = false;
+            this.grpCategory.Text = "Categoria";
+            this.grpCategory.Visible = false;
+            // 
+            // grpCategoryActions
+            // 
+            this.grpCategoryActions.Controls.Add(this.btnAdminCategory);
+            this.grpCategoryActions.Controls.Add(this.btnCreateCategory);
+            this.grpCategoryActions.Controls.Add(this.btnGetCategories);
+            this.grpCategoryActions.ForeColor = System.Drawing.Color.White;
+            this.grpCategoryActions.Location = new System.Drawing.Point(6, 6);
+            this.grpCategoryActions.Name = "grpCategoryActions";
+            this.grpCategoryActions.Size = new System.Drawing.Size(195, 385);
+            this.grpCategoryActions.TabIndex = 0;
+            this.grpCategoryActions.TabStop = false;
+            this.grpCategoryActions.Text = "Acciones";
             // 
             // tabPage2
             // 
@@ -121,7 +172,7 @@
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(131, 52);
             this.btnDeleteProduct.TabIndex = 9;
-            this.btnDeleteProduct.Text = "Delete";
+            this.btnDeleteProduct.Text = "Eliminar";
             this.btnDeleteProduct.UseVisualStyleBackColor = true;
             this.btnDeleteProduct.Click += new System.EventHandler(this.btnDeleteProduct_Click);
             // 
@@ -132,7 +183,7 @@
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(131, 52);
             this.btnUpdateProduct.TabIndex = 8;
-            this.btnUpdateProduct.Text = "Update";
+            this.btnUpdateProduct.Text = "Actualizar";
             this.btnUpdateProduct.UseVisualStyleBackColor = true;
             this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
             // 
@@ -247,7 +298,7 @@
             this.btnCreateProduct.Name = "btnCreateProduct";
             this.btnCreateProduct.Size = new System.Drawing.Size(183, 77);
             this.btnCreateProduct.TabIndex = 1;
-            this.btnCreateProduct.Text = "Crear Product";
+            this.btnCreateProduct.Text = "Crear Producto";
             this.btnCreateProduct.UseVisualStyleBackColor = true;
             this.btnCreateProduct.Click += new System.EventHandler(this.btnCreateProduct_Click);
             // 
@@ -286,6 +337,126 @@
             this.tabPage4.Text = "Admin";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // btnGetCategories
+            // 
+            this.btnGetCategories.ForeColor = System.Drawing.Color.Black;
+            this.btnGetCategories.Location = new System.Drawing.Point(6, 21);
+            this.btnGetCategories.Name = "btnGetCategories";
+            this.btnGetCategories.Size = new System.Drawing.Size(183, 77);
+            this.btnGetCategories.TabIndex = 0;
+            this.btnGetCategories.Text = "Registros";
+            this.btnGetCategories.UseVisualStyleBackColor = true;
+            this.btnGetCategories.Click += new System.EventHandler(this.btnGetCategories_Click);
+            // 
+            // btnCreateCategory
+            // 
+            this.btnCreateCategory.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateCategory.Location = new System.Drawing.Point(6, 104);
+            this.btnCreateCategory.Name = "btnCreateCategory";
+            this.btnCreateCategory.Size = new System.Drawing.Size(183, 77);
+            this.btnCreateCategory.TabIndex = 1;
+            this.btnCreateCategory.Text = "Crear Categoria";
+            this.btnCreateCategory.UseVisualStyleBackColor = true;
+            this.btnCreateCategory.Click += new System.EventHandler(this.btnCreateCategory_Click);
+            // 
+            // btnAdminCategory
+            // 
+            this.btnAdminCategory.ForeColor = System.Drawing.Color.Black;
+            this.btnAdminCategory.Location = new System.Drawing.Point(6, 187);
+            this.btnAdminCategory.Name = "btnAdminCategory";
+            this.btnAdminCategory.Size = new System.Drawing.Size(183, 77);
+            this.btnAdminCategory.TabIndex = 2;
+            this.btnAdminCategory.Text = "Administrar Categoria";
+            this.btnAdminCategory.UseVisualStyleBackColor = true;
+            this.btnAdminCategory.Click += new System.EventHandler(this.btnAdminCategory_Click);
+            // 
+            // gridCategories
+            // 
+            this.gridCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridCategories.Location = new System.Drawing.Point(16, 31);
+            this.gridCategories.Name = "gridCategories";
+            this.gridCategories.RowHeadersWidth = 51;
+            this.gridCategories.RowTemplate.Height = 24;
+            this.gridCategories.Size = new System.Drawing.Size(521, 245);
+            this.gridCategories.TabIndex = 0;
+            this.gridCategories.Visible = false;
+            // 
+            // btnUpdateCategory
+            // 
+            this.btnUpdateCategory.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdateCategory.Location = new System.Drawing.Point(65, 317);
+            this.btnUpdateCategory.Name = "btnUpdateCategory";
+            this.btnUpdateCategory.Size = new System.Drawing.Size(131, 52);
+            this.btnUpdateCategory.TabIndex = 1;
+            this.btnUpdateCategory.Text = "Actualizar";
+            this.btnUpdateCategory.UseVisualStyleBackColor = true;
+            this.btnUpdateCategory.Visible = false;
+            this.btnUpdateCategory.Click += new System.EventHandler(this.btnUpdateCategory_Click);
+            // 
+            // btnCreateNewCategory
+            // 
+            this.btnCreateNewCategory.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateNewCategory.Location = new System.Drawing.Point(212, 300);
+            this.btnCreateNewCategory.Name = "btnCreateNewCategory";
+            this.btnCreateNewCategory.Size = new System.Drawing.Size(131, 52);
+            this.btnCreateNewCategory.TabIndex = 2;
+            this.btnCreateNewCategory.Text = "Crear Categoria";
+            this.btnCreateNewCategory.UseVisualStyleBackColor = true;
+            this.btnCreateNewCategory.Visible = false;
+            this.btnCreateNewCategory.Click += new System.EventHandler(this.btnCreateNewCategory_Click);
+            // 
+            // btnDeleteCategory
+            // 
+            this.btnDeleteCategory.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(361, 317);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(131, 52);
+            this.btnDeleteCategory.TabIndex = 3;
+            this.btnDeleteCategory.Text = "Eliminar";
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Visible = false;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
+            // 
+            // lblCategoryCode
+            // 
+            this.lblCategoryCode.BackColor = System.Drawing.Color.White;
+            this.lblCategoryCode.ForeColor = System.Drawing.Color.Black;
+            this.lblCategoryCode.Location = new System.Drawing.Point(31, 51);
+            this.lblCategoryCode.Name = "lblCategoryCode";
+            this.lblCategoryCode.Size = new System.Drawing.Size(132, 23);
+            this.lblCategoryCode.TabIndex = 4;
+            this.lblCategoryCode.Text = "Codigo de Categoria";
+            this.lblCategoryCode.Visible = false;
+            // 
+            // lblCategoryDescription
+            // 
+            this.lblCategoryDescription.BackColor = System.Drawing.Color.White;
+            this.lblCategoryDescription.ForeColor = System.Drawing.Color.Black;
+            this.lblCategoryDescription.Location = new System.Drawing.Point(31, 107);
+            this.lblCategoryDescription.Name = "lblCategoryDescription";
+            this.lblCategoryDescription.Size = new System.Drawing.Size(132, 23);
+            this.lblCategoryDescription.TabIndex = 5;
+            this.lblCategoryDescription.Text = "Descripcion";
+            this.lblCategoryDescription.Visible = false;
+            // 
+            // txtCategoryCode
+            // 
+            this.txtCategoryCode.Location = new System.Drawing.Point(263, 51);
+            this.txtCategoryCode.Multiline = true;
+            this.txtCategoryCode.Name = "txtCategoryCode";
+            this.txtCategoryCode.Size = new System.Drawing.Size(243, 23);
+            this.txtCategoryCode.TabIndex = 6;
+            this.txtCategoryCode.Visible = false;
+            // 
+            // txtCategoryDescription
+            // 
+            this.txtCategoryDescription.Location = new System.Drawing.Point(263, 107);
+            this.txtCategoryDescription.Multiline = true;
+            this.txtCategoryDescription.Name = "txtCategoryDescription";
+            this.txtCategoryDescription.Size = new System.Drawing.Size(243, 106);
+            this.txtCategoryDescription.TabIndex = 7;
+            this.txtCategoryDescription.WordWrap = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -298,11 +469,16 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inventario";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.grpCategory.ResumeLayout(false);
+            this.grpCategory.PerformLayout();
+            this.grpCategoryActions.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.grpProducts.ResumeLayout(false);
             this.grpProducts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).EndInit();
             this.grProductActions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridCategories)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,5 +505,18 @@
         private System.Windows.Forms.TextBox txtProductCode;
         private System.Windows.Forms.Button btnDeleteProduct;
         private System.Windows.Forms.Button btnUpdateProduct;
+        private System.Windows.Forms.GroupBox grpCategory;
+        private System.Windows.Forms.GroupBox grpCategoryActions;
+        private System.Windows.Forms.Button btnAdminCategory;
+        private System.Windows.Forms.Button btnCreateCategory;
+        private System.Windows.Forms.Button btnGetCategories;
+        private System.Windows.Forms.DataGridView gridCategories;
+        private System.Windows.Forms.Button btnDeleteCategory;
+        private System.Windows.Forms.Button btnCreateNewCategory;
+        private System.Windows.Forms.Button btnUpdateCategory;
+        private System.Windows.Forms.TextBox txtCategoryDescription;
+        private System.Windows.Forms.TextBox txtCategoryCode;
+        private System.Windows.Forms.Label lblCategoryDescription;
+        private System.Windows.Forms.Label lblCategoryCode;
     }
 }

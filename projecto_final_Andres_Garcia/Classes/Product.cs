@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace projecto_final_Andres_Garcia.Classes
 {
+
     internal class Product
     {
         public int prodcode, catcode;
         public string description;
-
+        /* This is a constructor. */
         public Product(int in_prodcode, int in_catcode, string in_description)
         {
             this.prodcode = in_prodcode;

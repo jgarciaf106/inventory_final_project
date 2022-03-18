@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace projecto_final_Andres_Garcia.Classes
 {
+    
     internal class User
     {
         public string username, name, password;
         public bool isAdmin;
 
+        /* A constructor. */
         public User(string in_username, string in_name, string in_password, bool in_isAdmin)
         {
             this.username = in_username;

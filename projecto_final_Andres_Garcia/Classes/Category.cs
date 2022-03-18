@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace projecto_final_Andres_Garcia.Classes
 {
+    
     internal class Category
     {
         public int catcode;
         public string description;
 
+        /* A constructor. */
         public Category(int in_catcode, string in_description)
         {
             this.catcode = in_catcode;

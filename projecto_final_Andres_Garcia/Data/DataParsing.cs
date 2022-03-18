@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace projecto_final_Andres_Garcia.Data
 {
    
+    /* This class is used to store the results of a search */
     public class Result
     {
 
@@ -15,6 +16,7 @@ namespace projecto_final_Andres_Garcia.Data
         public int cat_code { get; set; }
     }
 
+    /* This class is used to parse the data from the API call */
     internal class DataParsing
     {
         public string access { get; set; }

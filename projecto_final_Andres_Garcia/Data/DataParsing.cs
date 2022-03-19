@@ -14,6 +14,9 @@ namespace projecto_final_Andres_Garcia.Data
         public string description { get; set; }
         public int prod_code { get; set; }
         public int cat_code { get; set; }
+        public bool is_admin { get; set; }
+        public string name { get; set; }
+        public string username { get; set; }
     }
 
     /* This class is used to parse the data from the API call */

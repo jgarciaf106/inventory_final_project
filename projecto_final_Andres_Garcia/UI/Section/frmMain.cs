@@ -17,9 +17,25 @@ namespace projecto_final_Andres_Garcia.UI
     public partial class frmMain : Form
     {
         DBAPI api = new DBAPI();
+        private int lastTabIndex = 0;
         public frmMain()
         {
             InitializeComponent();
+            this.FormClosing += frmMain_FormClosing;
+            tabControl.Selected += new TabControlEventHandler(tabControl_Selected);
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Esta seguro de cerrar la aplicacion. Confirmar?", "Cerrar Inventario", MessageBoxButtons.YesNo,
+                                   MessageBoxIcon.Question);
+            if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+
+            }
+            else { Environment.Exit(0); }
+
         }
 
         /// <summary>
@@ -42,6 +58,17 @@ namespace projecto_final_Andres_Garcia.UI
             gridCategories.DataSource = objBindingSource;
             gridCategories.ClearSelection();
             gridCategories.DefaultCellStyle.ForeColor = Color.Black;
+        }
+
+        /// <summary>
+        /// Load the user grid view with the data from the database
+        /// </summary>
+        private void loadUserGridView()
+        {
+            BindingSource objBindingSource = new InventoryData().loadUsers();
+            gridUsers.DataSource = objBindingSource;
+            gridUsers.ClearSelection();
+            gridUsers.DefaultCellStyle.ForeColor = Color.Black;
         }
 
         /// <summary>
@@ -82,7 +109,7 @@ namespace projecto_final_Andres_Garcia.UI
                 int productCategoryCodeToUpdate = Int32.Parse(gridProducts.Rows[indiceRow].Cells[1].Value.ToString());
                 string productDescriptionToUpdate = gridProducts.Rows[indiceRow].Cells[2].Value.ToString();
                 Product product = new Product(productCodeToUpdate, productCategoryCodeToUpdate, productDescriptionToUpdate);
-                
+
                 if (api.UpdateProduct(product, productCodeToUpdate))
                 {
                     MessageBox.Show("Producto actualizado exitosamente.");
@@ -123,7 +150,7 @@ namespace projecto_final_Andres_Garcia.UI
             if (api.CreateCategory(newCategory))
             {
 
-                MessageBox.Show("Categoria creada exitosamente.");;
+                MessageBox.Show("Categoria creada exitosamente."); ;
                 txtCategoryCode.Text = "";
                 txtCategoryDescription.Text = "";
             }
@@ -170,6 +197,69 @@ namespace projecto_final_Andres_Garcia.UI
             }
         }
 
+        private void btnCreateNewUser_Click(object sender, EventArgs e)
+        {
+            string newUsername, newName, newPassword;
+            bool newIsAdmin = false;
+
+            if (radioTrue.Checked){ newIsAdmin = true;} else if (radioFalse.Checked) { newIsAdmin = true; }
+
+            newUsername = txtUsername.Text;
+            newName = txtName.Text;
+            newPassword = txtPassword.Text;
+
+            User newUser= new User(newUsername, newName, newPassword, newIsAdmin);
+
+            if (api.CreateUser(newUser))
+            {
+
+                MessageBox.Show("Usuario creado exitosamente."); ;
+                txtUsername.Text = "";
+                txtName.Text = "";
+                txtPassword.Text = "";
+                radioTrue.Checked = false;
+                radioFalse.Checked = false;
+            }
+            else
+            {
+                MessageBox.Show("Favor completar todos los campos de usuario.");
+            }
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            if (gridUsers.SelectedCells.Count > 0)
+            {
+                int indiceRow = gridUsers.SelectedCells[0].RowIndex;
+                string usernameToUpdate = gridUsers.Rows[indiceRow].Cells[0].Value.ToString();
+                string nameToUpdate = gridUsers.Rows[indiceRow].Cells[1].Value.ToString();
+                string passwordToUpdate = gridUsers.Rows[indiceRow].Cells[2].Value.ToString();
+                bool adminStatusToUpdate = Boolean.Parse(gridUsers.Rows[indiceRow].Cells[2].Value.ToString());
+                User user = new User(usernameToUpdate, nameToUpdate, passwordToUpdate, adminStatusToUpdate);
+
+                if (api.UpdateUser(user, usernameToUpdate))
+                {
+                    MessageBox.Show("Usuario actualizado exitosamente.");
+                    loadUserGridView();
+                }
+            }
+        }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            if (gridUsers.SelectedCells.Count > 0)
+            {
+                int indiceRow = gridUsers.SelectedCells[0].RowIndex;
+                string userToDelete = gridUsers.Rows[indiceRow].Cells[0].Value.ToString();
+                if (api.DeleteUser(userToDelete))
+                {
+                    MessageBox.Show("Usuario eliminado exitosamente.");
+                    loadUserGridView();
+                }
+
+            }
+        }
+
         /// <summary>
         /// * Get all the products from the database and display them in a grid view
         private void btnGetProducts_Click(object sender, EventArgs e)
@@ -177,7 +267,7 @@ namespace projecto_final_Andres_Garcia.UI
             gridProducts.Visible = true;
             gridProducts.Height = 275;
             gridProducts.Width = 390;
-            
+
             lblProduct.Visible = false;
             lblProductCategory.Visible = false;
             lblProductDescription.Visible = false;
@@ -214,7 +304,7 @@ namespace projecto_final_Andres_Garcia.UI
 
             grpProducts.Visible = true;
             grpProducts.Text = "Crear Producto";
-           
+
         }
 
         private void btnAdminProduct_Click(object sender, EventArgs e)
@@ -302,6 +392,96 @@ namespace projecto_final_Andres_Garcia.UI
             grpCategory.Text = "Administrar Categoria";
 
             loadCategoryGridView();
+        }
+
+        private void btnCreateUser_Click(object sender, EventArgs e)
+        {
+            gridUsers.Visible = false;
+            
+            lblUsername.Visible = true;
+            lblName.Visible = true;
+            lblPassword.Visible = true;
+            lblIsAdmin.Visible = true;
+
+            txtUsername.Visible = true;
+            txtName.Visible = true;
+            txtPassword.Visible = true;
+            radioTrue.Visible = true;
+            radioFalse.Visible = true; 
+            
+            btnCreateNewUser.Visible = true;
+            btnUpdateUser.Visible = false;
+            btnDeleteUser.Visible = false;
+
+            grpUsers.Visible = true;
+            grpUsers.Text = "Crear Usario";
+
+        }
+
+        private void btnAdminUsers_Click(object sender, EventArgs e)
+        {
+            gridUsers.Visible = true;
+
+            lblUsername.Visible = false;
+            lblName.Visible = false;
+            lblPassword.Visible = false;
+            lblIsAdmin.Visible = false;
+
+            txtUsername.Visible = false;
+            txtName.Visible = false;
+            txtPassword.Visible = false;
+            radioTrue.Visible = false;
+            radioFalse.Visible = false;
+
+            btnCreateNewUser.Visible = false;
+            btnUpdateUser.Visible = true;
+            btnDeleteUser.Visible = true;
+
+            grpUsers.Visible = true;
+            grpUsers.Text = "Administrar Usuario";
+
+            loadUserGridView();
+        }
+        private void tabControl_Selected(object sender, TabControlEventArgs e)
+        {
+
+            if (e.TabPage.Name == tabPage1.Name)
+            {
+                grpUsers.Visible = false;
+                grpProducts.Visible = false;
+                lastTabIndex = 0;
+
+            }
+            if (e.TabPage.Name == tabPage2.Name)
+            {
+                grpUsers.Visible = false;
+                grpCategory.Visible = false;
+                lastTabIndex = 1;
+            }
+
+            if (e.TabPage.Name == tabPage3.Name)
+            {
+                grpUsers.Visible = false;
+                grpProducts.Visible = false;
+                grpCategory.Visible = false;
+                lastTabIndex = 2;
+            }
+
+            if (e.TabPage.Name == tabPage4.Name)
+            {
+                if (!State.isLogUserAdmin) {
+                    MessageBox.Show("La funciones de esta Seccion estan habilitadas solamente para el administrador.", "Administrador Inventario.", MessageBoxButtons.OK,
+                                                       MessageBoxIcon.Warning);
+                    tabControl.SelectedIndex = lastTabIndex;
+                }
+                grpUsers.Visible = false;
+                grpProducts.Visible = false;
+                grpCategory.Visible = false;
+
+
+            }
+
+
         }
 
     }

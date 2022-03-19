@@ -27,10 +27,9 @@ namespace projecto_final_Andres_Garcia
             frmMain objFrmMain = new frmMain();
             User objUser = new User(txtUsername.Text,"", txtPassword.Text, false);
             LogicInventory objInvLogic = new LogicInventory();
-            bool isUserAdmin = false;
-
+ 
             if (objInvLogic.GrantAccess(objUser).Item1) {
-                isUserAdmin = objInvLogic.GrantAccess(objUser).Item2;
+                State.isLogUserAdmin = objInvLogic.GrantAccess(objUser).Item2;
                 this.Hide();
                 objFrmMain.ShowDialog();             
             }
@@ -40,5 +39,6 @@ namespace projecto_final_Andres_Garcia
             }
 
         }
+
     }
 }

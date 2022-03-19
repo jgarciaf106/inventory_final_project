@@ -13,6 +13,12 @@ namespace projecto_final_Andres_Garcia.Data
 {
     internal class InventoryData
     {
+        /// <summary>
+        /// It loads the products from the database into a DataTable.
+        /// </summary>
+        /// <returns>
+        /// A BindingSource object.
+        /// </returns>
         public BindingSource loadProducts()
         {
             List<Product> products = new DBAPI().GetProducts();
@@ -37,8 +43,13 @@ namespace projecto_final_Andres_Garcia.Data
 
             return source;
         }
-
         
+        /// <summary>
+        /// Loads the categories from the database and returns them as a BindingSource
+        /// </summary>
+        /// <returns>
+        /// A BindingSource object.
+        /// </returns>
         public BindingSource loadCategories()
         {
             List<Category> categories = new DBAPI().GetCategories();
@@ -54,6 +65,39 @@ namespace projecto_final_Andres_Garcia.Data
                 DataRow row = dt.NewRow();
                 row["Category Code"] = category.catcode;
                 row["Description"] = category.description;
+                dt.Rows.Add(row);
+            }
+
+            source.DataSource = dt;
+
+            return source;
+        }
+
+        /// <summary>
+        /// Loads the users from the database and returns them as a BindingSource
+        /// </summary>
+        /// <returns>
+        /// A BindingSource object.
+        /// </returns>
+        public BindingSource loadUsers()
+        {
+            List<User> users = new DBAPI().GetUsers();
+
+            BindingSource source = new BindingSource();
+            DataTable dt = new DataTable();
+
+            dt.Columns.Add("Username", typeof(string));
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Password", typeof(string));
+            dt.Columns.Add("Is Admin?", typeof(bool));
+
+            foreach (User user in users)
+            {
+                DataRow row = dt.NewRow();
+                row["Username"] = user.username;
+                row["Name"] = user.name;
+                row["Password"] = user.password;
+                row["Is Admin?"] = user.isAdmin;
                 dt.Rows.Add(row);
             }
 

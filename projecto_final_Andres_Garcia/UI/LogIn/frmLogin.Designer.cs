@@ -126,6 +126,7 @@
             this.BackgroundImage = global::projecto_final_Andres_Garcia.Properties.Resources.logIn_bg;
             this.ClientSize = new System.Drawing.Size(465, 450);
             this.Controls.Add(this.grpLogIn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

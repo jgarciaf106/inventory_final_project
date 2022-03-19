@@ -51,6 +51,101 @@ namespace projecto_final_Andres_Garcia.API
             return userCreated;
         }
 
+
+        /// <summary>
+        /// It updates a user in the database.
+        /// </summary>
+        /// <param name="User">The user object that will be passed to the API.</param>
+        /// <param name="id">The id of the product to be updated.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
+        public Boolean UpdateUser(User obj, string id)
+        {
+            bool userUpdated = false;
+            // pass json object to API with product details.
+            string json = $"{{\"username\":\"{obj.username}\",\"name\":\"{obj.name}\",\"password\":\"{obj.password}\",\"isadmin\":\"{obj.isAdmin}\"}}";
+
+            try
+            {
+                var request = new RestRequest("updateuser/" + id, Method.PUT)
+                    .AddJsonBody(json);
+                var response = this.client.Execute(request);
+
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The user has being successfully updated.")
+                {
+                    userUpdated = true;
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return userUpdated;
+        }
+
+        /// <summary>
+        /// It deletes a user from the database.
+        /// </summary>
+        /// <param name="id">The id of the user you want to delete.</param>
+        /// <returns>
+        /// The method returns a boolean value.
+        /// </returns>
+        public Boolean DeleteUser(string id)
+        {
+            bool userDeleted = false;
+            // pass json object to API with product id to delete.
+            try
+            {
+                var request = new RestRequest("deleteuser/" + id, Method.DELETE);
+                var response = this.client.Execute(request);
+
+                if (JsonConvert.DeserializeObject<DataParsing>(response.Content).msg == "The user has being successfully deleted.")
+                {
+                    userDeleted = true;
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            return userDeleted;
+        }
+
+        /// <summary>
+        /// It returns a list of users.
+        /// </summary>
+        /// <returns>
+        /// A list of User objects.
+        /// </returns>
+        public List<User> GetUsers()
+        {
+            List<User> userList = new List<User>();
+            try
+            {
+                var request = new RestRequest("getusers", Method.GET);
+                var response = this.client.Execute(request);
+                var data = JsonConvert.DeserializeObject<DataParsing>(response.Content);
+
+                foreach (var item in data.results)
+                {
+                    string username = item.username;
+                    string name = item.name;
+                    bool isAdmin = item.is_admin;
+
+                    User objUser = new User(username,name,"********",isAdmin);
+                    userList.Add(objUser);
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return userList;
+        }
+
         /// <summary>
         /// It takes in a User object and returns a Tuple of two booleans. The first boolean is true if
         /// the user has access and the second boolean is true if the user is an admin.
@@ -292,7 +387,6 @@ namespace projecto_final_Andres_Garcia.API
         public Boolean DeleteCategory(int id)
         {
             bool categoryDeleted = false;
-            Console.WriteLine(id);
             try
             {
                 var request = new RestRequest("deletecategory/" + id, Method.DELETE);

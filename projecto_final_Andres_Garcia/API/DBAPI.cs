@@ -30,7 +30,7 @@ namespace projecto_final_Andres_Garcia.API
             bool userCreated = false;
             // pass json object to API with username, password and bool 
             // true to create an admin user false to create a regular user.
-            string json = $"{{\"username\":\"{obj.username}\",\"name\":\"{obj.name}\",\"password\":\"{obj.password}\",\"isadmin\":\"{obj.isAdmin}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {
@@ -64,7 +64,7 @@ namespace projecto_final_Andres_Garcia.API
         {
             bool userUpdated = false;
             // pass json object to API with product details.
-            string json = $"{{\"username\":\"{obj.username}\",\"name\":\"{obj.name}\",\"password\":\"{obj.password}\",\"isadmin\":\"{obj.isAdmin}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {
@@ -162,7 +162,7 @@ namespace projecto_final_Andres_Garcia.API
 
             // pass json object to API with username and password to 
             // validate if access should be granted.
-            string json = $"{{\"username\":\"{obj.username}\",\"password\":\"{obj.password}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {
@@ -197,7 +197,7 @@ namespace projecto_final_Andres_Garcia.API
         {
             bool producCreated = false;
             // pass json object to API with product details.
-            string json = $"{{\"prodcode\":\"{obj.prodcode}\",\"productcatcode\":\"{obj.catcode}\",\"description\":\"{obj.description}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {
@@ -230,7 +230,7 @@ namespace projecto_final_Andres_Garcia.API
         {
             bool producUpdated = false;
             // pass json object to API with product details.
-            string json = $"{{\"prodcode\":\"{obj.prodcode}\",\"productcatcode\":\"{obj.catcode}\",\"description\":\"{obj.description}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {
@@ -323,7 +323,7 @@ namespace projecto_final_Andres_Garcia.API
         {
             bool categoryCreated = false;
             // pass json object to API with category details
-            string json = $"{{\"catcode\":\"{obj.catcode}\",\"description\":\"{obj.description}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {
@@ -356,7 +356,7 @@ namespace projecto_final_Andres_Garcia.API
         {
             bool categoryUpdated = false;
             // pass json object to API with category details
-            string json = $"{{\"catcode\":\"{obj.catcode}\",\"description\":\"{obj.description}\"}}";
+            string json = JsonConvert.SerializeObject(obj);
 
             try
             {

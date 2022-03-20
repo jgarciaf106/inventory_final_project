@@ -25,7 +25,7 @@ namespace projecto_final_Andres_Garcia
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             frmMain objFrmMain = new frmMain();
-            User objUser = new User(txtUsername.Text,"", txtPassword.Text, false);
+            User objUser = new User(txtUsername.Text,"", txtPassword.Text,false);
             LogicInventory objInvLogic = new LogicInventory();
  
             if (objInvLogic.GrantAccess(objUser).Item1) {

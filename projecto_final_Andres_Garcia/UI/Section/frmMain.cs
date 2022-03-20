@@ -34,7 +34,9 @@ namespace projecto_final_Andres_Garcia.UI
                 e.Cancel = true;
 
             }
-            else { Environment.Exit(0); }
+            else { 
+                Environment.Exit(0); 
+            }
 
         }
 
@@ -202,18 +204,18 @@ namespace projecto_final_Andres_Garcia.UI
             string newUsername, newName, newPassword;
             bool newIsAdmin = false;
 
-            if (radioTrue.Checked){ newIsAdmin = true;} else if (radioFalse.Checked) { newIsAdmin = true; }
+            if (radioTrue.Checked){ newIsAdmin = true; } 
 
             newUsername = txtUsername.Text;
             newName = txtName.Text;
             newPassword = txtPassword.Text;
 
-            User newUser= new User(newUsername, newName, newPassword, newIsAdmin);
+            User newUser = new User(newUsername, newName, newPassword, newIsAdmin);
 
             if (api.CreateUser(newUser))
             {
 
-                MessageBox.Show("Usuario creado exitosamente."); ;
+                MessageBox.Show("Usuario creado exitosamente.");
                 txtUsername.Text = "";
                 txtName.Text = "";
                 txtPassword.Text = "";
@@ -229,19 +231,35 @@ namespace projecto_final_Andres_Garcia.UI
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
             if (gridUsers.SelectedCells.Count > 0)
-            {
+            {                
                 int indiceRow = gridUsers.SelectedCells[0].RowIndex;
                 string usernameToUpdate = gridUsers.Rows[indiceRow].Cells[0].Value.ToString();
                 string nameToUpdate = gridUsers.Rows[indiceRow].Cells[1].Value.ToString();
                 string passwordToUpdate = gridUsers.Rows[indiceRow].Cells[2].Value.ToString();
-                bool adminStatusToUpdate = Boolean.Parse(gridUsers.Rows[indiceRow].Cells[2].Value.ToString());
-                User user = new User(usernameToUpdate, nameToUpdate, passwordToUpdate, adminStatusToUpdate);
+                bool adminStatusToUpdate = Boolean.Parse(gridUsers.Rows[indiceRow].Cells[3].Value.ToString());
 
-                if (api.UpdateUser(user, usernameToUpdate))
-                {
-                    MessageBox.Show("Usuario actualizado exitosamente.");
-                    loadUserGridView();
+                if(passwordToUpdate == "********") { 
+                    var user = new User(usernameToUpdate, nameToUpdate, "", adminStatusToUpdate);
+
+                    if (api.UpdateUser(user, usernameToUpdate))
+                    {
+                        MessageBox.Show("Usuario actualizado exitosamente.");
+                        loadUserGridView();
+                    }
                 }
+                else
+                {
+                    var user = new User(usernameToUpdate, nameToUpdate, passwordToUpdate, adminStatusToUpdate);
+
+                    if (api.UpdateUser(user, usernameToUpdate))
+                    {
+                        MessageBox.Show("Usuario actualizado exitosamente.");
+                        loadUserGridView();
+                    }
+                }
+                
+
+                
             }
         }
 

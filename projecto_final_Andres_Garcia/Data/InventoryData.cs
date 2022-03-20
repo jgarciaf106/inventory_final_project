@@ -97,7 +97,7 @@ namespace projecto_final_Andres_Garcia.Data
                 row["Username"] = user.username;
                 row["Name"] = user.name;
                 row["Password"] = user.password;
-                row["Is Admin?"] = user.isAdmin;
+                row["Is Admin?"] = user.isadmin;
                 dt.Rows.Add(row);
             }
 

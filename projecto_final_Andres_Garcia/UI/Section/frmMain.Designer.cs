@@ -61,24 +61,26 @@
             this.btnCreateProduct = new System.Windows.Forms.Button();
             this.btnGetProducts = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.gridProductCategory = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.grpAdminActions = new System.Windows.Forms.GroupBox();
             this.grpUsers = new System.Windows.Forms.GroupBox();
-            this.btnCreateUser = new System.Windows.Forms.Button();
-            this.btnAdminUsers = new System.Windows.Forms.Button();
-            this.gridUsers = new System.Windows.Forms.DataGridView();
-            this.btnUpdateUser = new System.Windows.Forms.Button();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnCreateNewUser = new System.Windows.Forms.Button();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.lblIsAdmin = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.radioTrue = new System.Windows.Forms.RadioButton();
             this.radioFalse = new System.Windows.Forms.RadioButton();
+            this.radioTrue = new System.Windows.Forms.RadioButton();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblIsAdmin = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.btnCreateNewUser = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnUpdateUser = new System.Windows.Forms.Button();
+            this.gridUsers = new System.Windows.Forms.DataGridView();
+            this.grpAdminActions = new System.Windows.Forms.GroupBox();
+            this.btnAdminUsers = new System.Windows.Forms.Button();
+            this.btnCreateUser = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpCategory.SuspendLayout();
@@ -88,10 +90,12 @@
             this.grpProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).BeginInit();
             this.grProductActions.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridProductCategory)).BeginInit();
             this.tabPage4.SuspendLayout();
-            this.grpAdminActions.SuspendLayout();
             this.grpUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).BeginInit();
+            this.grpAdminActions.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -101,7 +105,7 @@
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Location = new System.Drawing.Point(9, 10);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(582, 346);
@@ -114,9 +118,9 @@
             this.tabPage1.Controls.Add(this.grpCategory);
             this.tabPage1.Controls.Add(this.grpCategoryActions);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage1.Size = new System.Drawing.Size(574, 320);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Categoria";
@@ -134,9 +138,9 @@
             this.grpCategory.Controls.Add(this.gridCategories);
             this.grpCategory.ForeColor = System.Drawing.Color.White;
             this.grpCategory.Location = new System.Drawing.Point(155, 5);
-            this.grpCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpCategory.Margin = new System.Windows.Forms.Padding(2);
             this.grpCategory.Name = "grpCategory";
-            this.grpCategory.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpCategory.Padding = new System.Windows.Forms.Padding(2);
             this.grpCategory.Size = new System.Drawing.Size(416, 313);
             this.grpCategory.TabIndex = 1;
             this.grpCategory.TabStop = false;
@@ -146,7 +150,7 @@
             // txtCategoryDescription
             // 
             this.txtCategoryDescription.Location = new System.Drawing.Point(197, 87);
-            this.txtCategoryDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCategoryDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtCategoryDescription.Multiline = true;
             this.txtCategoryDescription.Name = "txtCategoryDescription";
             this.txtCategoryDescription.Size = new System.Drawing.Size(183, 87);
@@ -156,7 +160,7 @@
             // txtCategoryCode
             // 
             this.txtCategoryCode.Location = new System.Drawing.Point(197, 41);
-            this.txtCategoryCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCategoryCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtCategoryCode.Multiline = true;
             this.txtCategoryCode.Name = "txtCategoryCode";
             this.txtCategoryCode.Size = new System.Drawing.Size(183, 19);
@@ -191,7 +195,7 @@
             // 
             this.btnDeleteCategory.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteCategory.Location = new System.Drawing.Point(271, 258);
-            this.btnDeleteCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(98, 42);
             this.btnDeleteCategory.TabIndex = 3;
@@ -204,7 +208,7 @@
             // 
             this.btnCreateNewCategory.ForeColor = System.Drawing.Color.Black;
             this.btnCreateNewCategory.Location = new System.Drawing.Point(159, 244);
-            this.btnCreateNewCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateNewCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateNewCategory.Name = "btnCreateNewCategory";
             this.btnCreateNewCategory.Size = new System.Drawing.Size(98, 42);
             this.btnCreateNewCategory.TabIndex = 2;
@@ -217,7 +221,7 @@
             // 
             this.btnUpdateCategory.ForeColor = System.Drawing.Color.Black;
             this.btnUpdateCategory.Location = new System.Drawing.Point(49, 258);
-            this.btnUpdateCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateCategory.Name = "btnUpdateCategory";
             this.btnUpdateCategory.Size = new System.Drawing.Size(98, 42);
             this.btnUpdateCategory.TabIndex = 1;
@@ -230,7 +234,7 @@
             // 
             this.gridCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCategories.Location = new System.Drawing.Point(12, 25);
-            this.gridCategories.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridCategories.Margin = new System.Windows.Forms.Padding(2);
             this.gridCategories.Name = "gridCategories";
             this.gridCategories.RowHeadersWidth = 51;
             this.gridCategories.RowTemplate.Height = 24;
@@ -245,9 +249,9 @@
             this.grpCategoryActions.Controls.Add(this.btnGetCategories);
             this.grpCategoryActions.ForeColor = System.Drawing.Color.White;
             this.grpCategoryActions.Location = new System.Drawing.Point(4, 5);
-            this.grpCategoryActions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpCategoryActions.Margin = new System.Windows.Forms.Padding(2);
             this.grpCategoryActions.Name = "grpCategoryActions";
-            this.grpCategoryActions.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpCategoryActions.Padding = new System.Windows.Forms.Padding(2);
             this.grpCategoryActions.Size = new System.Drawing.Size(146, 313);
             this.grpCategoryActions.TabIndex = 0;
             this.grpCategoryActions.TabStop = false;
@@ -257,7 +261,7 @@
             // 
             this.btnAdminCategory.ForeColor = System.Drawing.Color.Black;
             this.btnAdminCategory.Location = new System.Drawing.Point(4, 152);
-            this.btnAdminCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdminCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdminCategory.Name = "btnAdminCategory";
             this.btnAdminCategory.Size = new System.Drawing.Size(137, 63);
             this.btnAdminCategory.TabIndex = 2;
@@ -269,7 +273,7 @@
             // 
             this.btnCreateCategory.ForeColor = System.Drawing.Color.Black;
             this.btnCreateCategory.Location = new System.Drawing.Point(4, 84);
-            this.btnCreateCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateCategory.Name = "btnCreateCategory";
             this.btnCreateCategory.Size = new System.Drawing.Size(137, 63);
             this.btnCreateCategory.TabIndex = 1;
@@ -281,7 +285,7 @@
             // 
             this.btnGetCategories.ForeColor = System.Drawing.Color.Black;
             this.btnGetCategories.Location = new System.Drawing.Point(4, 17);
-            this.btnGetCategories.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGetCategories.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetCategories.Name = "btnGetCategories";
             this.btnGetCategories.Size = new System.Drawing.Size(137, 63);
             this.btnGetCategories.TabIndex = 0;
@@ -296,9 +300,9 @@
             this.tabPage2.Controls.Add(this.grpProducts);
             this.tabPage2.Controls.Add(this.grProductActions);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage2.Size = new System.Drawing.Size(574, 320);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Producto";
@@ -318,9 +322,9 @@
             this.grpProducts.Controls.Add(this.gridProducts);
             this.grpProducts.ForeColor = System.Drawing.Color.White;
             this.grpProducts.Location = new System.Drawing.Point(155, 5);
-            this.grpProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpProducts.Margin = new System.Windows.Forms.Padding(2);
             this.grpProducts.Name = "grpProducts";
-            this.grpProducts.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpProducts.Padding = new System.Windows.Forms.Padding(2);
             this.grpProducts.Size = new System.Drawing.Size(416, 313);
             this.grpProducts.TabIndex = 1;
             this.grpProducts.TabStop = false;
@@ -331,7 +335,7 @@
             // 
             this.btnDeleteProduct.ForeColor = System.Drawing.Color.Black;
             this.btnDeleteProduct.Location = new System.Drawing.Point(271, 258);
-            this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDeleteProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteProduct.Name = "btnDeleteProduct";
             this.btnDeleteProduct.Size = new System.Drawing.Size(98, 42);
             this.btnDeleteProduct.TabIndex = 9;
@@ -343,7 +347,7 @@
             // 
             this.btnUpdateProduct.ForeColor = System.Drawing.Color.Black;
             this.btnUpdateProduct.Location = new System.Drawing.Point(49, 258);
-            this.btnUpdateProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpdateProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpdateProduct.Name = "btnUpdateProduct";
             this.btnUpdateProduct.Size = new System.Drawing.Size(98, 42);
             this.btnUpdateProduct.TabIndex = 8;
@@ -355,7 +359,7 @@
             // 
             this.btnCreateNewProduct.ForeColor = System.Drawing.Color.Black;
             this.btnCreateNewProduct.Location = new System.Drawing.Point(159, 244);
-            this.btnCreateNewProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateNewProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateNewProduct.Name = "btnCreateNewProduct";
             this.btnCreateNewProduct.Size = new System.Drawing.Size(96, 42);
             this.btnCreateNewProduct.TabIndex = 7;
@@ -366,7 +370,7 @@
             // txtProductDescription
             // 
             this.txtProductDescription.Location = new System.Drawing.Point(197, 128);
-            this.txtProductDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProductDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtProductDescription.Multiline = true;
             this.txtProductDescription.Name = "txtProductDescription";
             this.txtProductDescription.Size = new System.Drawing.Size(183, 87);
@@ -375,7 +379,7 @@
             // txtProductCategoryCode
             // 
             this.txtProductCategoryCode.Location = new System.Drawing.Point(197, 87);
-            this.txtProductCategoryCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProductCategoryCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtProductCategoryCode.Multiline = true;
             this.txtProductCategoryCode.Name = "txtProductCategoryCode";
             this.txtProductCategoryCode.Size = new System.Drawing.Size(183, 19);
@@ -384,7 +388,7 @@
             // txtProductCode
             // 
             this.txtProductCode.Location = new System.Drawing.Point(197, 41);
-            this.txtProductCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtProductCode.Margin = new System.Windows.Forms.Padding(2);
             this.txtProductCode.Multiline = true;
             this.txtProductCode.Name = "txtProductCode";
             this.txtProductCode.Size = new System.Drawing.Size(183, 19);
@@ -431,7 +435,7 @@
             this.gridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridProducts.GridColor = System.Drawing.SystemColors.Control;
             this.gridProducts.Location = new System.Drawing.Point(12, 25);
-            this.gridProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridProducts.Margin = new System.Windows.Forms.Padding(2);
             this.gridProducts.Name = "gridProducts";
             this.gridProducts.RowHeadersWidth = 51;
             this.gridProducts.RowTemplate.Height = 24;
@@ -446,9 +450,9 @@
             this.grProductActions.Controls.Add(this.btnGetProducts);
             this.grProductActions.ForeColor = System.Drawing.Color.White;
             this.grProductActions.Location = new System.Drawing.Point(4, 5);
-            this.grProductActions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grProductActions.Margin = new System.Windows.Forms.Padding(2);
             this.grProductActions.Name = "grProductActions";
-            this.grProductActions.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grProductActions.Padding = new System.Windows.Forms.Padding(2);
             this.grProductActions.Size = new System.Drawing.Size(146, 313);
             this.grProductActions.TabIndex = 0;
             this.grProductActions.TabStop = false;
@@ -458,7 +462,7 @@
             // 
             this.btnAdminProduct.ForeColor = System.Drawing.Color.Black;
             this.btnAdminProduct.Location = new System.Drawing.Point(4, 152);
-            this.btnAdminProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdminProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdminProduct.Name = "btnAdminProduct";
             this.btnAdminProduct.Size = new System.Drawing.Size(137, 63);
             this.btnAdminProduct.TabIndex = 2;
@@ -470,7 +474,7 @@
             // 
             this.btnCreateProduct.ForeColor = System.Drawing.Color.Black;
             this.btnCreateProduct.Location = new System.Drawing.Point(4, 84);
-            this.btnCreateProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCreateProduct.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateProduct.Name = "btnCreateProduct";
             this.btnCreateProduct.Size = new System.Drawing.Size(137, 63);
             this.btnCreateProduct.TabIndex = 1;
@@ -482,7 +486,7 @@
             // 
             this.btnGetProducts.ForeColor = System.Drawing.Color.Black;
             this.btnGetProducts.Location = new System.Drawing.Point(4, 17);
-            this.btnGetProducts.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnGetProducts.Margin = new System.Windows.Forms.Padding(2);
             this.btnGetProducts.Name = "btnGetProducts";
             this.btnGetProducts.Size = new System.Drawing.Size(137, 63);
             this.btnGetProducts.TabIndex = 0;
@@ -494,14 +498,34 @@
             // 
             this.tabPage3.BackgroundImage = global::projecto_final_Andres_Garcia.Properties.Resources.logInBx_bg;
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.btnPrint);
+            this.tabPage3.Controls.Add(this.gridProductCategory);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(574, 320);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reportes";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(224, 261);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(96, 42);
+            this.btnPrint.TabIndex = 1;
+            this.btnPrint.Text = "Imprimir";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // gridProductCategory
+            // 
+            this.gridProductCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridProductCategory.Location = new System.Drawing.Point(20, 20);
+            this.gridProductCategory.Name = "gridProductCategory";
+            this.gridProductCategory.Size = new System.Drawing.Size(539, 235);
+            this.gridProductCategory.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -510,25 +534,13 @@
             this.tabPage4.Controls.Add(this.grpUsers);
             this.tabPage4.Controls.Add(this.grpAdminActions);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage4.Size = new System.Drawing.Size(574, 320);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Admin";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // grpAdminActions
-            // 
-            this.grpAdminActions.Controls.Add(this.btnAdminUsers);
-            this.grpAdminActions.Controls.Add(this.btnCreateUser);
-            this.grpAdminActions.ForeColor = System.Drawing.Color.White;
-            this.grpAdminActions.Location = new System.Drawing.Point(4, 5);
-            this.grpAdminActions.Name = "grpAdminActions";
-            this.grpAdminActions.Size = new System.Drawing.Size(146, 313);
-            this.grpAdminActions.TabIndex = 0;
-            this.grpAdminActions.TabStop = false;
-            this.grpAdminActions.Text = "Acciones";
             // 
             // grpUsers
             // 
@@ -554,141 +566,17 @@
             this.grpUsers.Text = "Usuarios";
             this.grpUsers.Visible = false;
             // 
-            // btnCreateUser
+            // radioFalse
             // 
-            this.btnCreateUser.ForeColor = System.Drawing.Color.Black;
-            this.btnCreateUser.Location = new System.Drawing.Point(4, 17);
-            this.btnCreateUser.Name = "btnCreateUser";
-            this.btnCreateUser.Size = new System.Drawing.Size(137, 63);
-            this.btnCreateUser.TabIndex = 0;
-            this.btnCreateUser.Text = "Crear Usuario";
-            this.btnCreateUser.UseVisualStyleBackColor = true;
-            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
-            // 
-            // btnAdminUsers
-            // 
-            this.btnAdminUsers.ForeColor = System.Drawing.Color.Black;
-            this.btnAdminUsers.Location = new System.Drawing.Point(4, 84);
-            this.btnAdminUsers.Name = "btnAdminUsers";
-            this.btnAdminUsers.Size = new System.Drawing.Size(137, 63);
-            this.btnAdminUsers.TabIndex = 1;
-            this.btnAdminUsers.Text = "Administrar Usuarios";
-            this.btnAdminUsers.UseVisualStyleBackColor = true;
-            this.btnAdminUsers.Click += new System.EventHandler(this.btnAdminUsers_Click);
-            // 
-            // gridUsers
-            // 
-            this.gridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridUsers.Location = new System.Drawing.Point(12, 25);
-            this.gridUsers.Name = "gridUsers";
-            this.gridUsers.Size = new System.Drawing.Size(391, 199);
-            this.gridUsers.TabIndex = 0;
-            this.gridUsers.Visible = false;
-            // 
-            // btnUpdateUser
-            // 
-            this.btnUpdateUser.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdateUser.Location = new System.Drawing.Point(49, 258);
-            this.btnUpdateUser.Name = "btnUpdateUser";
-            this.btnUpdateUser.Size = new System.Drawing.Size(98, 42);
-            this.btnUpdateUser.TabIndex = 1;
-            this.btnUpdateUser.Text = "Actualizar";
-            this.btnUpdateUser.UseVisualStyleBackColor = true;
-            this.btnUpdateUser.Visible = false;
-            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.ForeColor = System.Drawing.Color.Black;
-            this.btnDeleteUser.Location = new System.Drawing.Point(271, 258);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(98, 42);
-            this.btnDeleteUser.TabIndex = 2;
-            this.btnDeleteUser.Text = "Eliminar";
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Visible = false;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
-            // btnCreateNewUser
-            // 
-            this.btnCreateNewUser.ForeColor = System.Drawing.Color.Black;
-            this.btnCreateNewUser.Location = new System.Drawing.Point(159, 244);
-            this.btnCreateNewUser.Name = "btnCreateNewUser";
-            this.btnCreateNewUser.Size = new System.Drawing.Size(98, 42);
-            this.btnCreateNewUser.TabIndex = 3;
-            this.btnCreateNewUser.Text = "Crear Usuario";
-            this.btnCreateNewUser.UseVisualStyleBackColor = true;
-            this.btnCreateNewUser.Visible = false;
-            this.btnCreateNewUser.Click += new System.EventHandler(this.btnCreateNewUser_Click);
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.BackColor = System.Drawing.Color.White;
-            this.lblUsername.ForeColor = System.Drawing.Color.Black;
-            this.lblUsername.Location = new System.Drawing.Point(23, 41);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(124, 19);
-            this.lblUsername.TabIndex = 4;
-            this.lblUsername.Text = "Nombre de usuario";
-            this.lblUsername.Visible = false;
-            // 
-            // lblName
-            // 
-            this.lblName.BackColor = System.Drawing.Color.White;
-            this.lblName.ForeColor = System.Drawing.Color.Black;
-            this.lblName.Location = new System.Drawing.Point(23, 87);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(124, 19);
-            this.lblName.TabIndex = 5;
-            this.lblName.Text = "Nombre";
-            this.lblName.Visible = false;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.BackColor = System.Drawing.Color.White;
-            this.lblPassword.ForeColor = System.Drawing.Color.Black;
-            this.lblPassword.Location = new System.Drawing.Point(23, 130);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(124, 19);
-            this.lblPassword.TabIndex = 6;
-            this.lblPassword.Text = "Contraseña";
-            this.lblPassword.Visible = false;
-            // 
-            // lblIsAdmin
-            // 
-            this.lblIsAdmin.BackColor = System.Drawing.Color.White;
-            this.lblIsAdmin.ForeColor = System.Drawing.Color.Black;
-            this.lblIsAdmin.Location = new System.Drawing.Point(23, 175);
-            this.lblIsAdmin.Name = "lblIsAdmin";
-            this.lblIsAdmin.Size = new System.Drawing.Size(124, 19);
-            this.lblIsAdmin.TabIndex = 7;
-            this.lblIsAdmin.Text = "Administrador";
-            this.lblIsAdmin.Visible = false;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Location = new System.Drawing.Point(197, 41);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(183, 20);
-            this.txtUsername.TabIndex = 8;
-            this.txtUsername.Visible = false;
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(197, 87);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(183, 20);
-            this.txtName.TabIndex = 9;
-            this.txtName.Visible = false;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(197, 128);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(183, 20);
-            this.txtPassword.TabIndex = 10;
-            this.txtPassword.Visible = false;
+            this.radioFalse.AutoSize = true;
+            this.radioFalse.ForeColor = System.Drawing.Color.Black;
+            this.radioFalse.Location = new System.Drawing.Point(260, 177);
+            this.radioFalse.Name = "radioFalse";
+            this.radioFalse.Size = new System.Drawing.Size(39, 17);
+            this.radioFalse.TabIndex = 12;
+            this.radioFalse.TabStop = true;
+            this.radioFalse.Text = "No";
+            this.radioFalse.UseVisualStyleBackColor = true;
             // 
             // radioTrue
             // 
@@ -702,17 +590,153 @@
             this.radioTrue.Text = "Si";
             this.radioTrue.UseVisualStyleBackColor = true;
             // 
-            // radioFalse
+            // txtPassword
             // 
-            this.radioFalse.AutoSize = true;
-            this.radioFalse.ForeColor = System.Drawing.Color.Black;
-            this.radioFalse.Location = new System.Drawing.Point(260, 177);
-            this.radioFalse.Name = "radioFalse";
-            this.radioFalse.Size = new System.Drawing.Size(39, 17);
-            this.radioFalse.TabIndex = 12;
-            this.radioFalse.TabStop = true;
-            this.radioFalse.Text = "No";
-            this.radioFalse.UseVisualStyleBackColor = true;
+            this.txtPassword.Location = new System.Drawing.Point(197, 128);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(183, 20);
+            this.txtPassword.TabIndex = 10;
+            this.txtPassword.Visible = false;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(197, 87);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(183, 20);
+            this.txtName.TabIndex = 9;
+            this.txtName.Visible = false;
+            // 
+            // txtUsername
+            // 
+            this.txtUsername.Location = new System.Drawing.Point(197, 41);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(183, 20);
+            this.txtUsername.TabIndex = 8;
+            this.txtUsername.Visible = false;
+            // 
+            // lblIsAdmin
+            // 
+            this.lblIsAdmin.BackColor = System.Drawing.Color.White;
+            this.lblIsAdmin.ForeColor = System.Drawing.Color.Black;
+            this.lblIsAdmin.Location = new System.Drawing.Point(23, 175);
+            this.lblIsAdmin.Name = "lblIsAdmin";
+            this.lblIsAdmin.Size = new System.Drawing.Size(124, 19);
+            this.lblIsAdmin.TabIndex = 7;
+            this.lblIsAdmin.Text = "Administrador";
+            this.lblIsAdmin.Visible = false;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.BackColor = System.Drawing.Color.White;
+            this.lblPassword.ForeColor = System.Drawing.Color.Black;
+            this.lblPassword.Location = new System.Drawing.Point(23, 130);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(124, 19);
+            this.lblPassword.TabIndex = 6;
+            this.lblPassword.Text = "Contraseña";
+            this.lblPassword.Visible = false;
+            // 
+            // lblName
+            // 
+            this.lblName.BackColor = System.Drawing.Color.White;
+            this.lblName.ForeColor = System.Drawing.Color.Black;
+            this.lblName.Location = new System.Drawing.Point(23, 87);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(124, 19);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "Nombre";
+            this.lblName.Visible = false;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.BackColor = System.Drawing.Color.White;
+            this.lblUsername.ForeColor = System.Drawing.Color.Black;
+            this.lblUsername.Location = new System.Drawing.Point(23, 41);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(124, 19);
+            this.lblUsername.TabIndex = 4;
+            this.lblUsername.Text = "Nombre de usuario";
+            this.lblUsername.Visible = false;
+            // 
+            // btnCreateNewUser
+            // 
+            this.btnCreateNewUser.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateNewUser.Location = new System.Drawing.Point(159, 244);
+            this.btnCreateNewUser.Name = "btnCreateNewUser";
+            this.btnCreateNewUser.Size = new System.Drawing.Size(98, 42);
+            this.btnCreateNewUser.TabIndex = 3;
+            this.btnCreateNewUser.Text = "Crear Usuario";
+            this.btnCreateNewUser.UseVisualStyleBackColor = true;
+            this.btnCreateNewUser.Visible = false;
+            this.btnCreateNewUser.Click += new System.EventHandler(this.btnCreateNewUser_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.ForeColor = System.Drawing.Color.Black;
+            this.btnDeleteUser.Location = new System.Drawing.Point(271, 258);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(98, 42);
+            this.btnDeleteUser.TabIndex = 2;
+            this.btnDeleteUser.Text = "Eliminar";
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            this.btnDeleteUser.Visible = false;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
+            // btnUpdateUser
+            // 
+            this.btnUpdateUser.ForeColor = System.Drawing.Color.Black;
+            this.btnUpdateUser.Location = new System.Drawing.Point(49, 258);
+            this.btnUpdateUser.Name = "btnUpdateUser";
+            this.btnUpdateUser.Size = new System.Drawing.Size(98, 42);
+            this.btnUpdateUser.TabIndex = 1;
+            this.btnUpdateUser.Text = "Actualizar";
+            this.btnUpdateUser.UseVisualStyleBackColor = true;
+            this.btnUpdateUser.Visible = false;
+            this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
+            // 
+            // gridUsers
+            // 
+            this.gridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridUsers.Location = new System.Drawing.Point(12, 25);
+            this.gridUsers.Name = "gridUsers";
+            this.gridUsers.Size = new System.Drawing.Size(391, 199);
+            this.gridUsers.TabIndex = 0;
+            this.gridUsers.Visible = false;
+            // 
+            // grpAdminActions
+            // 
+            this.grpAdminActions.Controls.Add(this.btnAdminUsers);
+            this.grpAdminActions.Controls.Add(this.btnCreateUser);
+            this.grpAdminActions.ForeColor = System.Drawing.Color.White;
+            this.grpAdminActions.Location = new System.Drawing.Point(4, 5);
+            this.grpAdminActions.Name = "grpAdminActions";
+            this.grpAdminActions.Size = new System.Drawing.Size(146, 313);
+            this.grpAdminActions.TabIndex = 0;
+            this.grpAdminActions.TabStop = false;
+            this.grpAdminActions.Text = "Acciones";
+            // 
+            // btnAdminUsers
+            // 
+            this.btnAdminUsers.ForeColor = System.Drawing.Color.Black;
+            this.btnAdminUsers.Location = new System.Drawing.Point(4, 84);
+            this.btnAdminUsers.Name = "btnAdminUsers";
+            this.btnAdminUsers.Size = new System.Drawing.Size(137, 63);
+            this.btnAdminUsers.TabIndex = 1;
+            this.btnAdminUsers.Text = "Administrar Usuarios";
+            this.btnAdminUsers.UseVisualStyleBackColor = true;
+            this.btnAdminUsers.Click += new System.EventHandler(this.btnAdminUsers_Click);
+            // 
+            // btnCreateUser
+            // 
+            this.btnCreateUser.ForeColor = System.Drawing.Color.Black;
+            this.btnCreateUser.Location = new System.Drawing.Point(4, 17);
+            this.btnCreateUser.Name = "btnCreateUser";
+            this.btnCreateUser.Size = new System.Drawing.Size(137, 63);
+            this.btnCreateUser.TabIndex = 0;
+            this.btnCreateUser.Text = "Crear Usuario";
+            this.btnCreateUser.UseVisualStyleBackColor = true;
+            this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
             // 
             // frmMain
             // 
@@ -722,7 +746,7 @@
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.tabControl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -738,11 +762,13 @@
             this.grpProducts.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProducts)).EndInit();
             this.grProductActions.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridProductCategory)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            this.grpAdminActions.ResumeLayout(false);
             this.grpUsers.ResumeLayout(false);
             this.grpUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsers)).EndInit();
+            this.grpAdminActions.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -799,5 +825,7 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.RadioButton radioFalse;
         private System.Windows.Forms.RadioButton radioTrue;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.DataGridView gridProductCategory;
     }
 }

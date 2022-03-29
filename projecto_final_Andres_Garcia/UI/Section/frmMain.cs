@@ -74,6 +74,17 @@ namespace projecto_final_Andres_Garcia.UI
         }
 
         /// <summary>
+        /// Load the user grid view with the data from the database
+        /// </summary>
+        private void loadProductCategoryGridView()
+        {
+            BindingSource objBindingSource = new InventoryData().loadProductsCategories();
+            gridProductCategory.DataSource = objBindingSource;
+            gridProductCategory.ClearSelection();
+            gridProductCategory.DefaultCellStyle.ForeColor = Color.Black;
+        }
+
+        /// <summary>
         /// Create a new product and add it to the database
         private void btnCreateNewProduct_Click(object sender, EventArgs e)
         {
@@ -483,6 +494,7 @@ namespace projecto_final_Andres_Garcia.UI
                 grpProducts.Visible = false;
                 grpCategory.Visible = false;
                 lastTabIndex = 2;
+                loadProductCategoryGridView();
             }
 
             if (e.TabPage.Name == tabPage4.Name)
@@ -502,5 +514,9 @@ namespace projecto_final_Andres_Garcia.UI
 
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

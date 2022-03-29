@@ -745,6 +745,7 @@
             this.BackgroundImage = global::projecto_final_Andres_Garcia.Properties.Resources.logIn_bg;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.tabControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;

@@ -9,13 +9,13 @@ namespace projecto_final_Andres_Garcia.Classes
 
     internal class Product
     {
-        public int prodcode, catcode;
+        public int prodcode, productcatcode;
         public string description;
         /* This is a constructor. */
         public Product(int in_prodcode, int in_catcode, string in_description)
         {
             this.prodcode = in_prodcode;
-            this.catcode = in_catcode;
+            this.productcatcode = in_catcode;
             this.description = in_description;
         }
 

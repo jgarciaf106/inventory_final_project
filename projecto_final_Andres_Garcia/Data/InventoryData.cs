@@ -34,7 +34,7 @@ namespace projecto_final_Andres_Garcia.Data
             {
                 DataRow row = dt.NewRow();
                 row["Product Code"] = product.prodcode;
-                row["Category Code"] = product.catcode;
+                row["Category Code"] = product.productcatcode;
                 row["Description"] = product.description;
                 dt.Rows.Add(row);
             }
@@ -120,13 +120,13 @@ namespace projecto_final_Andres_Garcia.Data
             dtP.Columns.Add("Product Code", typeof(int));
             dtP.Columns.Add("Category Code", typeof(int));
             dtP.Columns.Add("Product Description", typeof(string));
-            dtP.PrimaryKey = new DataColumn[] { dtP.Columns["Category Code"] };
+            //dtP.PrimaryKey = new DataColumn[] { dtP.Columns["Category Code"] };
 
             foreach (Product product in products)
             {
                 DataRow row = dtP.NewRow();
                 row["Product Code"] = product.prodcode;
-                row["Category Code"] = product.catcode;
+                row["Category Code"] = product.productcatcode;
                 row["Product Description"] = product.description;
                 dtP.Rows.Add(row);
             }
@@ -134,7 +134,7 @@ namespace projecto_final_Andres_Garcia.Data
             
             dtC.Columns.Add("Category Code", typeof(int));
             dtC.Columns.Add("Category Description", typeof(string));
-            dtC.PrimaryKey = new DataColumn[] { dtC.Columns["Category Code"] };
+            //dtC.PrimaryKey = new DataColumn[] { dtC.Columns["Category Code"] };
 
             foreach (Category category in categories)
             {

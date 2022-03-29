@@ -198,6 +198,7 @@ namespace projecto_final_Andres_Garcia.API
             bool producCreated = false;
             // pass json object to API with product details.
             string json = JsonConvert.SerializeObject(obj);
+            Console.WriteLine(json);
 
             try
             {

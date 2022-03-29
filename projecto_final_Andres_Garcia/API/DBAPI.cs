@@ -346,6 +346,39 @@ namespace projecto_final_Andres_Garcia.API
         }
 
         /// <summary>
+        /// It returns a list of products.
+        /// </summary>
+        /// <returns>
+        /// A list of Product objects.
+        /// </returns>
+        public List<Inventory> GetProductsCategories()
+        {
+            List<Inventory> productList = new List<Inventory>();
+            try
+            {
+                var request = new RestRequest("getproductscategories", Method.GET);
+                var response = this.client.Execute(request);
+                var data = JsonConvert.DeserializeObject<DataParsing>(response.Content);
+
+                foreach (var item in data.results)
+                {
+                    int prodCode = item.prod_code;
+                    int catCode = item.cat_code;
+                    string prodDescription = item.cat_desc;
+                    string catDescription = item.prod_desc;
+
+                    Inventory objProduct = new Inventory(prodCode, catCode, prodDescription, catDescription);
+                    productList.Add(objProduct);
+                }
+            }
+            catch (WebException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return productList;
+        }
+
+        /// <summary>
         /// It updates a category in the database.
         /// </summary>
         /// <param name="Category">The category object that will be updated.</param>

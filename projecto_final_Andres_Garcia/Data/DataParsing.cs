@@ -12,6 +12,8 @@ namespace projecto_final_Andres_Garcia.Data
     {
 
         public string description { get; set; }
+        public string prod_desc { get; set; }
+        public string cat_desc { get; set; }
         public int prod_code { get; set; }
         public int cat_code { get; set; }
         public bool is_admin { get; set; }

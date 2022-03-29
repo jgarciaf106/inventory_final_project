@@ -109,44 +109,29 @@ namespace projecto_final_Andres_Garcia.Data
 
         public BindingSource loadProductsCategories()
         {
-            List<Product> products = new DBAPI().GetProducts();
-            List<Category> categories = new DBAPI().GetCategories();
+            List<Inventory> inventory = new DBAPI().GetProductsCategories();
 
             BindingSource source = new BindingSource();
-            DataTable dtP = new DataTable();
-            DataTable dtC = new DataTable();
+            DataTable dt = new DataTable();
 
             
-            dtP.Columns.Add("Product Code", typeof(int));
-            dtP.Columns.Add("Category Code", typeof(int));
-            dtP.Columns.Add("Product Description", typeof(string));
-            //dtP.PrimaryKey = new DataColumn[] { dtP.Columns["Category Code"] };
+            dt.Columns.Add("Product Code", typeof(int));
+            dt.Columns.Add("Category Code", typeof(int));
+            dt.Columns.Add("Product Description", typeof(string));
+            dt.Columns.Add("Category Description", typeof(string));
 
-            foreach (Product product in products)
+            foreach (Inventory item in inventory)
             {
-                DataRow row = dtP.NewRow();
-                row["Product Code"] = product.prodcode;
-                row["Category Code"] = product.productcatcode;
-                row["Product Description"] = product.description;
-                dtP.Rows.Add(row);
+                DataRow row = dt.NewRow();
+                row["Product Code"] = item.prodcode;
+                row["Category Code"] = item.catcode;
+                row["Product Description"] = item.catdescription;
+                row["Category Description"] = item.catdescription;
+                dt.Rows.Add(row);
             }
 
-            
-            dtC.Columns.Add("Category Code", typeof(int));
-            dtC.Columns.Add("Category Description", typeof(string));
-            //dtC.PrimaryKey = new DataColumn[] { dtC.Columns["Category Code"] };
 
-            foreach (Category category in categories)
-            {
-                DataRow row = dtC.NewRow();
-                row["Category Code"] = category.catcode;
-                row["Category Description"] = category.description;
-                dtC.Rows.Add(row);
-            }
-
-            dtP.Merge(dtC);
-
-            source.DataSource = dtP;
+            source.DataSource = dt;
 
             return source;
         }

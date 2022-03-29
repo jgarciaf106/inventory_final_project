@@ -1,4 +1,6 @@
-﻿using projecto_final_Andres_Garcia.API;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using projecto_final_Andres_Garcia.API;
 using projecto_final_Andres_Garcia.Classes;
 using projecto_final_Andres_Garcia.Data;
 using projecto_final_Andres_Garcia.Logic;
@@ -7,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,8 +37,9 @@ namespace projecto_final_Andres_Garcia.UI
                 e.Cancel = true;
 
             }
-            else { 
-                Environment.Exit(0); 
+            else
+            {
+                Environment.Exit(0);
             }
 
         }
@@ -215,7 +219,7 @@ namespace projecto_final_Andres_Garcia.UI
             string newUsername, newName, newPassword;
             bool newIsAdmin = false;
 
-            if (radioTrue.Checked){ newIsAdmin = true; } 
+            if (radioTrue.Checked) { newIsAdmin = true; }
 
             newUsername = txtUsername.Text;
             newName = txtName.Text;
@@ -242,14 +246,15 @@ namespace projecto_final_Andres_Garcia.UI
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
             if (gridUsers.SelectedCells.Count > 0)
-            {                
+            {
                 int indiceRow = gridUsers.SelectedCells[0].RowIndex;
                 string usernameToUpdate = gridUsers.Rows[indiceRow].Cells[0].Value.ToString();
                 string nameToUpdate = gridUsers.Rows[indiceRow].Cells[1].Value.ToString();
                 string passwordToUpdate = gridUsers.Rows[indiceRow].Cells[2].Value.ToString();
                 bool adminStatusToUpdate = Boolean.Parse(gridUsers.Rows[indiceRow].Cells[3].Value.ToString());
 
-                if(passwordToUpdate == "********") { 
+                if (passwordToUpdate == "********")
+                {
                     var user = new User(usernameToUpdate, nameToUpdate, "", adminStatusToUpdate);
 
                     if (api.UpdateUser(user, usernameToUpdate))
@@ -268,9 +273,9 @@ namespace projecto_final_Andres_Garcia.UI
                         loadUserGridView();
                     }
                 }
-                
 
-                
+
+
             }
         }
 
@@ -426,7 +431,7 @@ namespace projecto_final_Andres_Garcia.UI
         private void btnCreateUser_Click(object sender, EventArgs e)
         {
             gridUsers.Visible = false;
-            
+
             lblUsername.Visible = true;
             lblName.Visible = true;
             lblPassword.Visible = true;
@@ -436,8 +441,8 @@ namespace projecto_final_Andres_Garcia.UI
             txtName.Visible = true;
             txtPassword.Visible = true;
             radioTrue.Visible = true;
-            radioFalse.Visible = true; 
-            
+            radioFalse.Visible = true;
+
             btnCreateNewUser.Visible = true;
             btnUpdateUser.Visible = false;
             btnDeleteUser.Visible = false;
@@ -499,7 +504,8 @@ namespace projecto_final_Andres_Garcia.UI
 
             if (e.TabPage.Name == tabPage4.Name)
             {
-                if (!State.isLogUserAdmin) {
+                if (!State.isLogUserAdmin)
+                {
                     MessageBox.Show("La funciones de esta Seccion estan habilitadas solamente para el administrador.", "Administrador Inventario.", MessageBoxButtons.OK,
                                                        MessageBoxIcon.Warning);
                     tabControl.SelectedIndex = lastTabIndex;
@@ -516,7 +522,58 @@ namespace projecto_final_Andres_Garcia.UI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            //Creating iTextSharp Table from the DataTable data
+            PdfPTable pdfTable = new PdfPTable(gridProductCategory.ColumnCount);
+            pdfTable.DefaultCell.Padding = 3;
+            pdfTable.WidthPercentage = 40;
+            pdfTable.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfTable.DefaultCell.BorderWidth = 1;
 
+            //Adding Header row
+            foreach (DataGridViewColumn column in gridProductCategory.Columns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                pdfTable.AddCell(cell);
+            }
+
+            //Adding DataRow
+            /*foreach (DataGridViewRow row in gridProductCategory.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    pdfTable.AddCell(cell.Value.ToString());
+                }
+            }*/
+
+            if (gridProductCategory.SelectedCells.Count > 0)
+            {
+                int indiceRow = gridProductCategory.SelectedCells[0].RowIndex;
+                string prodCode = gridProductCategory.Rows[indiceRow].Cells[1].Value.ToString();
+                pdfTable.AddCell(prodCode);
+                string catCode = gridProductCategory.Rows[indiceRow].Cells[2].Value.ToString();
+                pdfTable.AddCell(catCode);
+                string prodDescription = gridProductCategory.Rows[indiceRow].Cells[3].Value.ToString();
+                pdfTable.AddCell(prodDescription);
+                string catDescription = gridProductCategory.Rows[indiceRow].Cells[3].Value.ToString();
+                pdfTable.AddCell(catDescription);
+            }
+
+                //Exporting to PDF.
+                string folderPath = @"C:\\";
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            using (FileStream stream = new FileStream(folderPath + "DataGridViewImageExport.pdf", FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
+                PdfWriter.GetInstance(pdfDoc, stream);
+                pdfDoc.Open();
+                pdfDoc.Add(pdfTable);
+                pdfDoc.Close();
+                stream.Close();
+            }
         }
     }
 }

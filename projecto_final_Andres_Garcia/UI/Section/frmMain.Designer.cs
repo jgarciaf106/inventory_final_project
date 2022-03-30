@@ -81,6 +81,7 @@
             this.grpAdminActions = new System.Windows.Forms.GroupBox();
             this.btnAdminUsers = new System.Windows.Forms.Button();
             this.btnCreateUser = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpCategory.SuspendLayout();
@@ -232,6 +233,7 @@
             // 
             // gridCategories
             // 
+            this.gridCategories.AllowUserToAddRows = false;
             this.gridCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridCategories.Location = new System.Drawing.Point(12, 25);
             this.gridCategories.Margin = new System.Windows.Forms.Padding(2);
@@ -432,6 +434,7 @@
             // 
             // gridProducts
             // 
+            this.gridProducts.AllowUserToAddRows = false;
             this.gridProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridProducts.GridColor = System.Drawing.SystemColors.Control;
             this.gridProducts.Location = new System.Drawing.Point(12, 25);
@@ -521,6 +524,7 @@
             // 
             // gridProductCategory
             // 
+            this.gridProductCategory.AllowUserToAddRows = false;
             this.gridProductCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridProductCategory.Location = new System.Drawing.Point(20, 20);
             this.gridProductCategory.Name = "gridProductCategory";
@@ -697,6 +701,7 @@
             // 
             // gridUsers
             // 
+            this.gridUsers.AllowUserToAddRows = false;
             this.gridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridUsers.Location = new System.Drawing.Point(12, 25);
             this.gridUsers.Name = "gridUsers";
@@ -738,12 +743,23 @@
             this.btnCreateUser.UseVisualStyleBackColor = true;
             this.btnCreateUser.Click += new System.EventHandler(this.btnCreateUser_Click);
             // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(506, 4);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(86, 23);
+            this.btnLogOut.TabIndex = 5;
+            this.btnLogOut.Text = "Cerrar Sesion";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::projecto_final_Andres_Garcia.Properties.Resources.logIn_bg;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -828,5 +844,6 @@
         private System.Windows.Forms.RadioButton radioTrue;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DataGridView gridProductCategory;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

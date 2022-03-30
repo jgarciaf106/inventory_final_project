@@ -39,7 +39,7 @@ namespace projecto_final_Andres_Garcia.UI
             }
             else
             {
-                Environment.Exit(0);
+                Environment.Exit(1);
             }
 
         }
@@ -522,58 +522,73 @@ namespace projecto_final_Andres_Garcia.UI
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "PDF (*.pdf)|*.pdf";
+            sfd.FileName = "Reporte " + DateTime.Now.ToString("yyyy-dd-M -HH-mm-ss") + ".pdf";
+            bool fileError = false;
             //Creating iTextSharp Table from the DataTable data
             PdfPTable pdfTable = new PdfPTable(gridProductCategory.ColumnCount);
             pdfTable.DefaultCell.Padding = 3;
-            pdfTable.WidthPercentage = 40;
+            pdfTable.WidthPercentage = 60;
             pdfTable.HorizontalAlignment = Element.ALIGN_CENTER;
             pdfTable.DefaultCell.BorderWidth = 1;
 
-            //Adding Header row
-            foreach (DataGridViewColumn column in gridProductCategory.Columns)
-            {
-                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
-                pdfTable.AddCell(cell);
-            }
 
-            //Adding DataRow
-            /*foreach (DataGridViewRow row in gridProductCategory.Rows)
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                foreach (DataGridViewCell cell in row.Cells)
+
+                //Adding Header row
+                foreach (DataGridViewColumn column in gridProductCategory.Columns)
                 {
-                    pdfTable.AddCell(cell.Value.ToString());
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                    cell.BackgroundColor = new iTextSharp.text.BaseColor(240, 240, 240);
+                    pdfTable.AddCell(cell);
                 }
-            }*/
 
-            if (gridProductCategory.SelectedCells.Count > 0)
-            {
-                int indiceRow = gridProductCategory.SelectedCells[0].RowIndex;
-                string prodCode = gridProductCategory.Rows[indiceRow].Cells[1].Value.ToString();
-                pdfTable.AddCell(prodCode);
-                string catCode = gridProductCategory.Rows[indiceRow].Cells[2].Value.ToString();
-                pdfTable.AddCell(catCode);
-                string prodDescription = gridProductCategory.Rows[indiceRow].Cells[3].Value.ToString();
-                pdfTable.AddCell(prodDescription);
-                string catDescription = gridProductCategory.Rows[indiceRow].Cells[3].Value.ToString();
-                pdfTable.AddCell(catDescription);
-            }
+                //Adding DataRow
+                if (gridProductCategory.SelectedRows.Count == 1 )
+                {
+                    int indiceRow = gridProductCategory.SelectedCells[0].RowIndex;
+                    string prodCode = gridProductCategory.Rows[indiceRow].Cells[0].Value.ToString();
+                    pdfTable.AddCell(prodCode);
+                    string catCode = gridProductCategory.Rows[indiceRow].Cells[1].Value.ToString();
+                    pdfTable.AddCell(catCode);
+                    string prodDescription = gridProductCategory.Rows[indiceRow].Cells[2].Value.ToString();
+                    pdfTable.AddCell(prodDescription);
+                    string catDescription = gridProductCategory.Rows[indiceRow].Cells[3].Value.ToString();
+                    pdfTable.AddCell(catDescription);
+                }
+                else
+                {
+                    //Adding datagrid table
+                    foreach (DataGridViewRow row in gridProductCategory.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            pdfTable.AddCell(cell.Value.ToString());
+                        }
+                    }
+                }
 
-                //Exporting to PDF.
-                string folderPath = @"C:\\";
-            if (!Directory.Exists(folderPath))
-            {
-                Directory.CreateDirectory(folderPath);
+                using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
+                    PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+                    pdfDoc.Add(pdfTable);
+                    pdfDoc.Close();
+                    stream.Close();
+                    MessageBox.Show("Reporte Creado.");
+                }
             }
-            using (FileStream stream = new FileStream(folderPath + "DataGridViewImageExport.pdf", FileMode.Create))
-            {
-                Document pdfDoc = new Document(PageSize.A2, 10f, 10f, 10f, 0f);
-                PdfWriter.GetInstance(pdfDoc, stream);
-                pdfDoc.Open();
-                pdfDoc.Add(pdfTable);
-                pdfDoc.Close();
-                stream.Close();
-            }
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            frmLogin objFrmLogin = new frmLogin();
+            this.Hide();
+            objFrmLogin.ShowDialog();
         }
     }
 }

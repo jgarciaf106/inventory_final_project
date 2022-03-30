@@ -52,9 +52,11 @@
             this.grpLogIn.Controls.Add(this.txtUsername);
             this.grpLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpLogIn.ForeColor = System.Drawing.Color.White;
-            this.grpLogIn.Location = new System.Drawing.Point(66, 65);
+            this.grpLogIn.Location = new System.Drawing.Point(50, 53);
+            this.grpLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpLogIn.Name = "grpLogIn";
-            this.grpLogIn.Size = new System.Drawing.Size(345, 311);
+            this.grpLogIn.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpLogIn.Size = new System.Drawing.Size(259, 253);
             this.grpLogIn.TabIndex = 0;
             this.grpLogIn.TabStop = false;
             this.grpLogIn.Text = "Iniciar sesión";
@@ -63,9 +65,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(32, 170);
+            this.label2.Location = new System.Drawing.Point(24, 138);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Contraseña";
             // 
@@ -73,9 +76,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(32, 111);
+            this.label1.Location = new System.Drawing.Point(24, 90);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Usuario";
             // 
@@ -83,9 +87,10 @@
             // 
             this.imgBox.BackColor = System.Drawing.Color.Transparent;
             this.imgBox.Image = ((System.Drawing.Image)(resources.GetObject("imgBox.Image")));
-            this.imgBox.Location = new System.Drawing.Point(115, 21);
+            this.imgBox.Location = new System.Drawing.Point(86, 17);
+            this.imgBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.imgBox.Name = "imgBox";
-            this.imgBox.Size = new System.Drawing.Size(118, 86);
+            this.imgBox.Size = new System.Drawing.Size(88, 70);
             this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgBox.TabIndex = 3;
             this.imgBox.TabStop = false;
@@ -93,9 +98,10 @@
             // btnLogIn
             // 
             this.btnLogIn.ForeColor = System.Drawing.Color.Black;
-            this.btnLogIn.Location = new System.Drawing.Point(115, 249);
+            this.btnLogIn.Location = new System.Drawing.Point(86, 202);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(118, 35);
+            this.btnLogIn.Size = new System.Drawing.Size(88, 28);
             this.btnLogIn.TabIndex = 2;
             this.btnLogIn.Text = "Ingresar";
             this.btnLogIn.UseVisualStyleBackColor = true;
@@ -103,30 +109,34 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(35, 189);
+            this.txtPassword.Location = new System.Drawing.Point(26, 154);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(278, 35);
+            this.txtPassword.Size = new System.Drawing.Size(210, 29);
             this.txtPassword.TabIndex = 1;
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(35, 130);
+            this.txtUsername.Location = new System.Drawing.Point(26, 106);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(278, 36);
+            this.txtUsername.Size = new System.Drawing.Size(210, 30);
             this.txtUsername.TabIndex = 0;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btnLogIn;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::projecto_final_Andres_Garcia.Properties.Resources.logIn_bg;
-            this.ClientSize = new System.Drawing.Size(465, 450);
+            this.ClientSize = new System.Drawing.Size(349, 366);
             this.Controls.Add(this.grpLogIn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

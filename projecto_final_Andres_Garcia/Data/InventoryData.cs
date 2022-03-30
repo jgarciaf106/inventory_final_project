@@ -125,7 +125,7 @@ namespace projecto_final_Andres_Garcia.Data
                 DataRow row = dt.NewRow();
                 row["Product Code"] = item.prodcode;
                 row["Category Code"] = item.catcode;
-                row["Product Description"] = item.catdescription;
+                row["Product Description"] = item.proddescription;
                 row["Category Description"] = item.catdescription;
                 dt.Rows.Add(row);
             }

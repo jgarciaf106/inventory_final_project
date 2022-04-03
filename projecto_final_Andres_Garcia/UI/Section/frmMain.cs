@@ -525,7 +525,6 @@ namespace projecto_final_Andres_Garcia.UI
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "PDF (*.pdf)|*.pdf";
             sfd.FileName = "Reporte " + DateTime.Now.ToString("yyyy-dd-M -HH-mm-ss") + ".pdf";
-            bool fileError = false;
             //Creating iTextSharp Table from the DataTable data
             PdfPTable pdfTable = new PdfPTable(gridProductCategory.ColumnCount);
             pdfTable.DefaultCell.Padding = 3;
@@ -545,18 +544,16 @@ namespace projecto_final_Andres_Garcia.UI
                     pdfTable.AddCell(cell);
                 }
 
-                //Adding DataRow
-                if (gridProductCategory.SelectedRows.Count == 1 )
+                //Adding DataRow or Rows
+                if (gridProductCategory.SelectedRows.Count > 0 )
                 {
-                    int indiceRow = gridProductCategory.SelectedCells[0].RowIndex;
-                    string prodCode = gridProductCategory.Rows[indiceRow].Cells[0].Value.ToString();
-                    pdfTable.AddCell(prodCode);
-                    string catCode = gridProductCategory.Rows[indiceRow].Cells[1].Value.ToString();
-                    pdfTable.AddCell(catCode);
-                    string prodDescription = gridProductCategory.Rows[indiceRow].Cells[2].Value.ToString();
-                    pdfTable.AddCell(prodDescription);
-                    string catDescription = gridProductCategory.Rows[indiceRow].Cells[3].Value.ToString();
-                    pdfTable.AddCell(catDescription);
+                    foreach (DataGridViewRow row in gridProductCategory.SelectedRows)
+                    {
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            pdfTable.AddCell(cell.Value.ToString());
+                        }
+                    }
                 }
                 else
                 {
@@ -579,7 +576,7 @@ namespace projecto_final_Andres_Garcia.UI
                     pdfDoc.Add(pdfTable);
                     pdfDoc.Close();
                     stream.Close();
-                    MessageBox.Show("Reporte Creado.");
+                    MessageBox.Show("Reporte Creado.", "Reporte Inventario.");
                 }
             }
         }

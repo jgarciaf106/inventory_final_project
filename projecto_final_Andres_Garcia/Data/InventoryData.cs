@@ -26,16 +26,16 @@ namespace projecto_final_Andres_Garcia.Data
             BindingSource source = new BindingSource();
             DataTable dt = new DataTable();
 
-            dt.Columns.Add("Product Code", typeof(int));
-            dt.Columns.Add("Category Code", typeof(int));
-            dt.Columns.Add("Description", typeof(string));
+            dt.Columns.Add("Codigo Producto", typeof(int));
+            dt.Columns.Add("Codigo Categoria", typeof(int));
+            dt.Columns.Add("Descripcion", typeof(string));
 
             foreach(Product product in products)
             {
                 DataRow row = dt.NewRow();
-                row["Product Code"] = product.prodcode;
-                row["Category Code"] = product.productcatcode;
-                row["Description"] = product.description;
+                row["Codigo Producto"] = product.prodcode;
+                row["Codigo Categoria"] = product.productcatcode;
+                row["Descripcion"] = product.description;
                 dt.Rows.Add(row);
             }
 
@@ -57,14 +57,14 @@ namespace projecto_final_Andres_Garcia.Data
             BindingSource source = new BindingSource();
             DataTable dt = new DataTable();
 
-            dt.Columns.Add("Category Code", typeof(int));
-            dt.Columns.Add("Description", typeof(string));
+            dt.Columns.Add("Codigo Categoria", typeof(int));
+            dt.Columns.Add("Descripcion", typeof(string));
 
             foreach (Category category in categories)
             {
                 DataRow row = dt.NewRow();
-                row["Category Code"] = category.catcode;
-                row["Description"] = category.description;
+                row["Codigo Categoria"] = category.catcode;
+                row["Descripcion"] = category.description;
                 dt.Rows.Add(row);
             }
 
@@ -115,18 +115,18 @@ namespace projecto_final_Andres_Garcia.Data
             DataTable dt = new DataTable();
 
             
-            dt.Columns.Add("Product Code", typeof(int));
-            dt.Columns.Add("Category Code", typeof(int));
-            dt.Columns.Add("Product Description", typeof(string));
-            dt.Columns.Add("Category Description", typeof(string));
+            dt.Columns.Add("Codigo Producto", typeof(int));
+            dt.Columns.Add("Codigo Categoria", typeof(int));
+            dt.Columns.Add("Descripcion Producto", typeof(string));
+            dt.Columns.Add("Descripcion Categoria", typeof(string));
 
             foreach (Inventory item in inventory)
             {
                 DataRow row = dt.NewRow();
-                row["Product Code"] = item.prodcode;
-                row["Category Code"] = item.catcode;
-                row["Product Description"] = item.proddescription;
-                row["Category Description"] = item.catdescription;
+                row["Codigo Producto"] = item.prodcode;
+                row["Codigo Categoria"] = item.catcode;
+                row["Descripcion Producto"] = item.proddescription;
+                row["Descripcion Categoria"] = item.catdescription;
                 dt.Rows.Add(row);
             }
 

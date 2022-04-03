@@ -53,6 +53,7 @@ namespace projecto_final_Andres_Garcia.UI
             gridProducts.DataSource = objBindingSource;
             gridProducts.ClearSelection();
             gridProducts.DefaultCellStyle.ForeColor = Color.Black;
+            gridProducts.Sort(gridProducts.Columns["Codigo Producto"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
         /// <summary>
@@ -64,6 +65,7 @@ namespace projecto_final_Andres_Garcia.UI
             gridCategories.DataSource = objBindingSource;
             gridCategories.ClearSelection();
             gridCategories.DefaultCellStyle.ForeColor = Color.Black;
+            gridCategories.Sort(gridCategories.Columns["Codigo Categoria"], System.ComponentModel.ListSortDirection.Ascending);
         }
 
         /// <summary>
@@ -75,6 +77,7 @@ namespace projecto_final_Andres_Garcia.UI
             gridUsers.DataSource = objBindingSource;
             gridUsers.ClearSelection();
             gridUsers.DefaultCellStyle.ForeColor = Color.Black;
+
         }
 
         /// <summary>
@@ -86,6 +89,7 @@ namespace projecto_final_Andres_Garcia.UI
             gridProductCategory.DataSource = objBindingSource;
             gridProductCategory.ClearSelection();
             gridProductCategory.DefaultCellStyle.ForeColor = Color.Black;
+            gridProductCategory.Sort(gridProductCategory.Columns["Codigo Producto"],System.ComponentModel.ListSortDirection.Ascending);
         }
 
         /// <summary>

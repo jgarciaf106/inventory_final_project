@@ -364,8 +364,8 @@ namespace projecto_final_Andres_Garcia.API
                 {
                     int prodCode = item.prod_code;
                     int catCode = item.cat_code;
-                    string prodDescription = item.cat_desc;
-                    string catDescription = item.prod_desc;
+                    string prodDescription = item.prod_desc; 
+                    string catDescription = item.cat_desc;
 
                     Inventory objProduct = new Inventory(prodCode, catCode, prodDescription, catDescription);
                     productList.Add(objProduct);
